@@ -1,0 +1,7 @@
+D:\solutions\learn\MyList\MyList\bin\Debug\MyList.exe.config
+D:\solutions\learn\MyList\MyList\bin\Debug\MyList.exe
+D:\solutions\learn\MyList\MyList\bin\Debug\MyList.pdb
+D:\solutions\learn\MyList\MyList\obj\Debug\MyList.csprojAssemblyReference.cache
+D:\solutions\learn\MyList\MyList\obj\Debug\MyList.csproj.CoreCompileInputs.cache
+D:\solutions\learn\MyList\MyList\obj\Debug\MyList.exe
+D:\solutions\learn\MyList\MyList\obj\Debug\MyList.pdb
