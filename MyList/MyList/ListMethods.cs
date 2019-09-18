@@ -1,32 +1,64 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyList
 {
     public class ListMethods
     {
-        private int _index = 0;
-        private int _sizeArray = 1;
-        private int[] _items = new int[1];
+        private int _index;
+        private int[] _items;
+        private int _sizeArray;
+
+        public ListMethods()
+        {
+            _items = new int[0];
+        }
 
         public void Add(int value)
         {
-            if (_items[_index] != 0)
-            {
-                _index++;
-                _sizeArray++;
-                Array.Resize(ref _items, _sizeArray);
-            }
+            Resize();
             _items[_index] = value;
+            _index++;
         }
 
         public int Get(int index)
         {
-            return 0;
+            int value = _items[index];
+            return value;
+        }
+
+        public void RemoveAt(int index)
+        {
+            int[] newItems = new int[_index - 1];
+            for (int i = 0; i < newItems.Length; i++)
+            {
+                if (_items[i] != _items[index])
+                {
+                    newItems[i] = _items[i];
+                }
+                else
+                {
+                    newItems[i] = _items[i + 1];
+                }
+                
+            }
+            _items = newItems;
+            _index = _items.Length;
+        }
+
+        private void Resize()
+        {
+            int[] newItems = new int[_index + 1];
+
+            for (int i = 0; i < _items.Length; i++)
+            {
+                newItems[i] = _items[i];
+            }
+            _items = newItems;
+        }
+        public int Count()
+        {
+            _sizeArray = _index;
+            return _sizeArray;
         }
     }
 }
