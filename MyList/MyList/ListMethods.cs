@@ -31,16 +31,18 @@ namespace MyList
             int[] newItems = new int[_index - 1];
             for (int i = 0; i < newItems.Length; i++)
             {
-                if (_items[i] != _items[index])
-                {
+                if (i < index)
                     newItems[i] = _items[i];
-                }
                 else
-                {
                     newItems[i] = _items[i + 1];
-                }
-                
             }
+
+            //for (int i = 0; i < index; i++)
+            //    newItems[i] = _items[i];
+
+            //for (int i = index; i < newItems.Length; i++)
+            //    newItems[i] = _items[i + 1];
+
             _items = newItems;
             _index = _items.Length;
         }
