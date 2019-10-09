@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MyList
 {
@@ -7,6 +8,14 @@ namespace MyList
        static void Main(string[] args)
         {
             ListMethods myList = new ListMethods();
+            LinkedList newList = new LinkedList(0);
+            
+            newList._next = new LinkedList(2);
+            newList._next._next = new LinkedList(3);
+            newList._next._next._next = new LinkedList(4);
+            newList.Print();
+
+
 
             myList.Add(1);
             myList.Add(0);

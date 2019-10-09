@@ -2,6 +2,26 @@
 
 namespace MyList
 {
+    public class LinkedList
+    {
+        public int _data;
+        public LinkedList _next;
+        public LinkedList(int value)
+        {
+            _data = value;
+            _next = null;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine(_data);
+            if (_next!=null)
+            {
+                _next.Print();
+            }
+        }
+        
+    }
     public class ListMethods
     {
         private int _index;
@@ -14,6 +34,7 @@ namespace MyList
         }
 
         public void Add(int value)
+
         {
             Resize();
             _items[_index] = value;
