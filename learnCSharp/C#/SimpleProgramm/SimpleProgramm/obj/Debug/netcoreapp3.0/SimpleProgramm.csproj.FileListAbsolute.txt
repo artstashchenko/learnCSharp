@@ -1,0 +1,11 @@
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\bin\Debug\netcoreapp3.0\SimpleProgramm.exe
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\bin\Debug\netcoreapp3.0\SimpleProgramm.deps.json
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\bin\Debug\netcoreapp3.0\SimpleProgramm.runtimeconfig.json
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\bin\Debug\netcoreapp3.0\SimpleProgramm.runtimeconfig.dev.json
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\bin\Debug\netcoreapp3.0\SimpleProgramm.dll
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\bin\Debug\netcoreapp3.0\SimpleProgramm.pdb
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\obj\Debug\netcoreapp3.0\SimpleProgramm.csprojAssemblyReference.cache
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\obj\Debug\netcoreapp3.0\SimpleProgramm.AssemblyInfoInputs.cache
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\obj\Debug\netcoreapp3.0\SimpleProgramm.AssemblyInfo.cs
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\obj\Debug\netcoreapp3.0\SimpleProgramm.dll
+D:\solutions\learn\learnCSharp\C#\SimpleProgramm\SimpleProgramm\obj\Debug\netcoreapp3.0\SimpleProgramm.pdb
