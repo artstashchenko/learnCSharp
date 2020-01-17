@@ -2,19 +2,67 @@
 
 namespace SimpleProgramm
 {
-    class CastExpr {
-        static void Main()
-        {
-            double n;
 
-            for (n = 1.0; n <= 10; n++)
+    class NoZeroDiv { 
+    static void Main() {
+
+            for (int i = -5; i < 6; i++)
             {
-                Console.WriteLine("Квадратный корень из {0} равен {1}", n, Math.Sqrt(n));
-                Console.WriteLine("d: {0}", (int)Math.Sqrt(n));
-                Console.WriteLine("Дробная часть числа: {0}", Math.Sqrt(n) - (int)Math.Sqrt(n));
+                if (i != 0 ? (i % 2 == 0) : false)
+                    Console.WriteLine("100 / " + i + " equals " + 100 / i);
             }
+            //int result;
+            //for (int i = -5; i < 6; i++)
+            //{
+            //    result = i != 0 ? 100 / i : 0;
+            //    if (i!=0)
+            //    {
+            //        Console.WriteLine("100 / " + i + " equals " + result);
+            //    }
+            //}
         }
     }
+    //class PrePostDemo { 
+    //static void Main()
+    //    {
+    //        int x, y;
+    //        int i;
+
+    //        x = 1;
+    //        y = 0;
+    //        Console.WriteLine("Number of digits received" + "with helping operator y = y + x++;");
+    //        for (i = 0; i < 10; i++)
+    //        {
+    //            y = y + x++;
+    //            Console.WriteLine(y + " ");
+    //        }
+    //        Console.WriteLine();
+
+    //        x = 1;
+    //        y = 0;
+
+    //        Console.WriteLine("Number of digits received" + "with helping operator y = y+ ++x;");
+    //        for (i = 0; i < 10; i++)
+    //            {
+    //                y = y + ++x;
+
+    //                Console.WriteLine(y + " ");
+    //            }
+    //        }
+    //    }
+    //class CastExpr {
+    //    static void Main()
+    //    {
+    //        double n;
+
+    //        for (n = 1.0; n <= 10; n++)
+    //        {
+    //            Console.WriteLine("Квадратный корень из {0} равен {1}", n, Math.Sqrt(n));
+    //            Console.WriteLine("d: {0}", (int)Math.Sqrt(n));
+    //            Console.WriteLine("Дробная часть числа: {0}", Math.Sqrt(n) - (int)Math.Sqrt(n));
+    //        }
+    //    }
+    //}
     //class ScopeDemo {
 
     //    static void Main() {
