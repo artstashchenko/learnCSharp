@@ -3,25 +3,102 @@
 namespace SimpleProgramm
 {
 
-    class NoZeroDiv { 
-    static void Main() {
+    class Comma {
+        static void Main()
+        {
+            int i, j;
+            int smallest, largest;
+            int num;
 
-            for (int i = -5; i < 6; i++)
+            num = 100;
+
+            smallest = largest = 1;
+
+            for (i = 2, j = num / 2; (i <= num / 2) & (j >= 2); i++, j--)
             {
-                if (i != 0 ? (i % 2 == 0) : false)
-                    Console.WriteLine("100 / " + i + " equals " + 100 / i);
-            }
-            //int result;
-            //for (int i = -5; i < 6; i++)
-            //{
-            //    result = i != 0 ? 100 / i : 0;
-            //    if (i!=0)
-            //    {
-            //        Console.WriteLine("100 / " + i + " equals " + result);
-            //    }
-            //}
+                if ((smallest == 1) &((num % i) == 0))
+                smallest = i;
+            if ((largest == 1) & ((num % j) == 0))
+                largest = j;
         }
-    }
+            Console.WriteLine("largest multiplier: " + largest);
+            Console.WriteLine("smallest multiplier: " + smallest);
+        }
+ }
+   // class FindPrimes {
+   //     static void Main()
+   //     { 
+   //     int num;
+   //     int i;
+   //     int factor;
+   //     bool isprime;
+
+   //     for (num = 2; num<20; num++)
+			//{
+   //         isprime = true;
+   //         factor = 0;
+			
+   //         for (i = 2; i <= num/2; i++)
+   //         {
+   //             if ((num % i) == 0) {
+   //                 isprime = false;
+   //                 factor = i;
+   //             }
+
+   //         }
+   //         if (isprime)
+   //             Console.WriteLine(num + " - simple digit.");
+   //         else
+   //             Console.WriteLine("biggest * digit" + num + "equals" + factor);
+   //     }
+   //   }
+   // }
+    //class SwitchDemo {
+    //    static void Main() {
+    //        int i;
+
+    //        for (i = 0; i < 10; i++)
+    //        switch (i){
+    //                case 0:
+    //                    Console.WriteLine("i equals zero");
+    //                    break;
+    //                case 1:
+    //                    Console.WriteLine("i equals 1");
+    //                    break;
+    //                case 2:
+    //                    Console.WriteLine("i equals 2");
+    //                    break;
+    //                case 3:
+    //                    Console.WriteLine("i equals 3");
+    //                    break;
+    //                case 4:
+    //                    Console.WriteLine("i equals 4");
+    //                    break;
+    //                default:
+    //                    Console.WriteLine("i equals 5 or greater");
+    //                    break;
+    //            }
+    //    }
+    //}
+    //class NoZeroDiv { 
+    //static void Main() {
+
+    //        for (int i = -5; i < 6; i++)
+    //        {
+    //            if (i != 0 ? (i % 2 == 0) : false)
+    //                Console.WriteLine("100 / " + i + " equals " + 100 / i);
+    //        }
+    //        //int result;
+    //        //for (int i = -5; i < 6; i++)
+    //        //{
+    //        //    result = i != 0 ? 100 / i : 0;
+    //        //    if (i!=0)
+    //        //    {
+    //        //        Console.WriteLine("100 / " + i + " equals " + result);
+    //        //    }
+    //        //}
+    //    }
+    //}
     //class PrePostDemo { 
     //static void Main()
     //    {
