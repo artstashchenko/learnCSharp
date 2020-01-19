@@ -3,28 +3,68 @@
 namespace SimpleProgramm
 {
 
-    class Comma {
+    class BreakNested
+    {
         static void Main()
         {
-            int i, j;
-            int smallest, largest;
-            int num;
-
-            num = 100;
-
-            smallest = largest = 1;
-
-            for (i = 2, j = num / 2; (i <= num / 2) & (j >= 2); i++, j--)
+            for (int i = 0; i < 3; i++)
             {
-                if ((smallest == 1) &((num % i) == 0))
-                smallest = i;
-            if ((largest == 1) & ((num % j) == 0))
-                largest = j;
+                Console.WriteLine("Count external cycle: " + i);
+                Console.Write("Count internal cycle: ");
+
+                int t = 0;
+                while (t < 100) {
+                    if (t == 10) break;
+                    Console.Write(t + " ");
+                    t++;
+                }
+
+                Console.WriteLine();
+            }
+            Console.WriteLine("cycle finish");
         }
-            Console.WriteLine("largest multiplier: " + largest);
-            Console.WriteLine("smallest multiplier: " + smallest);
-        }
- }
+    }
+    //class DoWhileDemo { 
+    //static void Main()
+    //    {
+    //        int num;
+    //        int nextdigit;
+    //        num = 198;
+
+    //        Console.WriteLine("Digit: " + num);
+    //        Console.Write("Number in reverse mode: ");
+
+    //        do
+    //        {
+    //            nextdigit = num % 10;
+    //            Console.Write(nextdigit);
+    //            num = num / 10;
+    //        } while (num > 0);
+    //        Console.WriteLine();
+    //    }
+    //}
+ //   class Comma {
+ //       static void Main()
+ //       {
+ //           int i, j;
+ //           int smallest, largest;
+ //           int num;
+
+ //           num = 100;
+
+ //           smallest = largest = 1;
+
+ //           for (i = 2, j = num / 2; (i <= num / 2) & (j >= 2); i++, j--)
+ //           {
+ //               if ((smallest == 1) &((num % i) == 0))
+ //               smallest = i;
+ //           if ((largest == 1) & ((num % j) == 0))
+ //               largest = j;
+ //       }
+ //           Console.WriteLine("largest multiplier: " + largest);
+ //           Console.WriteLine("smallest multiplier: " + smallest);
+ //       }
+ //}
    // class FindPrimes {
    //     static void Main()
    //     { 
