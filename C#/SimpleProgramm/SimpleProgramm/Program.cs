@@ -2,28 +2,65 @@
 
 namespace SimpleProgramm
 {
+    class Building {
 
-    class BreakNested
-    {
-        static void Main()
+        public int Floors;
+        public int Area;
+        public int Occupants;
+        public int AreaPerPerson()
         {
-            for (int i = 0; i < 3; i++)
-            {
-                Console.WriteLine("Count external cycle: " + i);
-                Console.Write("Count internal cycle: ");
+            return Area / Occupants;
+        }
 
-                int t = 0;
-                while (t < 100) {
-                    if (t == 10) break;
-                    Console.Write(t + " ");
-                    t++;
-                }
+        class BuildingDemo {
+        static void Main() {
+            Building house = new Building();
+            Building office = new Building();
+            int areaPP;
+
+
+            house.Occupants = 4;
+            house.Area = 2500;
+            house.Floors = 2;
+
+                office.Occupants = 25;
+                office.Area = 4200;
+                office.Floors = 3;
+                
+                areaPP = house.AreaPerPerson();
+
+            Console.WriteLine("House contains:\n " + house.Floors + "floor\n " + house.Occupants + " occupants\n " + house.Area + "square \n " + areaPP + "for one person");
 
                 Console.WriteLine();
+
+                areaPP = office.AreaPerPerson();
+                Console.WriteLine("House contains:\n " + office.Floors + "floor\n " + office.Occupants + " occupants\n " + office.Area + "square \n " + areaPP + "for one person");
+
+                office.AreaPerPerson();
             }
-            Console.WriteLine("cycle finish");
-        }
     }
+    }
+    //class BreakNested
+    //{
+    //    static void Main()
+    //    {
+    //        for (int i = 0; i < 3; i++)
+    //        {
+    //            Console.WriteLine("Count external cycle: " + i);
+    //            Console.Write("Count internal cycle: ");
+
+    //            int t = 0;
+    //            while (t < 100) {
+    //                if (t == 10) break;
+    //                Console.Write(t + " ");
+    //                t++;
+    //            }
+
+    //            Console.WriteLine();
+    //        }
+    //        Console.WriteLine("cycle finish");
+    //    }
+    //}
     //class DoWhileDemo { 
     //static void Main()
     //    {
