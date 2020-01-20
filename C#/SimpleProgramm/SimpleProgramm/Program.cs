@@ -2,44 +2,70 @@
 
 namespace SimpleProgramm
 {
-    class Building {
+    class Rect {
+        public int Width;
+        public int Height;
 
-        public int Floors;
-        public int Area;
-        public int Occupants;
-        public int AreaPerPerson()
+        public Rect(int w, int h)
         {
-            return Area / Occupants;
+            Width = w;
+            Height = h;
         }
 
-        class BuildingDemo {
+        public int Area() {
+            return Width * Height;
+        }
+    }
+
+    class UseRect {
         static void Main() {
-            Building house = new Building();
-            Building office = new Building();
-            int areaPP;
+            Rect r1 = new Rect(4, 5);
+            Rect r2 = new Rect(7,9);
 
+            Console.WriteLine("Area figure is r1: " + r1.Area());
+            Console.WriteLine("Area figure is r2: " + r2.Area());
+        }
+    }
+    //class Building {
 
-            house.Occupants = 4;
-            house.Area = 2500;
-            house.Floors = 2;
+    //    public int Floors;
+    //    public int Area;
+    //    public int Occupants;
 
-                office.Occupants = 25;
-                office.Area = 4200;
-                office.Floors = 3;
+    //    public Building(int f, int a, int o)
+    //    {
+    //        Floors = f;
+    //        Area = a;
+    //        Occupants = o;
+    //    }
+    //    public int AreaPerPerson()
+    //    {
+    //        return Area / Occupants;
+    //    }
+
+    //    public int MaxOccupant(int minArea)
+    //    {
+    //        return Area / minArea;
+    //    }
+
+    //    class BuildingDemo {
+    //    static void Main() {
+    //        Building house = new Building(2, 2500, 4);
+    //        Building office = new Building(3, 4200, 25);
+
+            
                 
-                areaPP = house.AreaPerPerson();
+            
+    //        Console.WriteLine("MAx people in our house is, \n" + house.MaxOccupant(300));
 
-            Console.WriteLine("House contains:\n " + house.Floors + "floor\n " + house.Occupants + " occupants\n " + house.Area + "square \n " + areaPP + "for one person");
+    //            Console.WriteLine();
 
-                Console.WriteLine();
+    //            Console.WriteLine("MAx people in our house is, \n" + office.MaxOccupant(300));
 
-                areaPP = office.AreaPerPerson();
-                Console.WriteLine("House contains:\n " + office.Floors + "floor\n " + office.Occupants + " occupants\n " + office.Area + "square \n " + areaPP + "for one person");
-
-                office.AreaPerPerson();
-            }
-    }
-    }
+    //            office.AreaPerPerson();
+    //        }
+    //}
+    //}
     //class BreakNested
     //{
     //    static void Main()
