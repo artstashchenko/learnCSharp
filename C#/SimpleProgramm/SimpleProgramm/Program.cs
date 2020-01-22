@@ -1,31 +1,141 @@
 ﻿using System;
+using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class Rect {
-        public int Width;
-        public int Height;
 
-        public Rect(int w, int h)
+    class StrOps {
+        static void Main()
         {
-            Width = w;
-            Height = h;
-        }
+            string s1 = "Coding in .net much better on C#";
+            string s2 = "Coding in .net much better on C#";
+            string s3 = "String in C# more effective";
+            string strUP, strLow;
+            int result, idx;
 
-        public int Area() {
-            return Width * Height;
+            Console.WriteLine("s1: " + s1);
+            Console.WriteLine("Length s1: "+ s1.Length);
+
+            strLow = s1.ToLower(CultureInfo.CurrentCulture);
+            strUP = s2.ToUpper(CultureInfo.CurrentCulture);
+            Console.WriteLine(strUP);
+            Console.WriteLine(strLow);
+            Console.WriteLine();
+
+            for(int i = 0; i< s1.Length; i++)
+                {
+                Console.Write(s1[i]);
+            }
+            Console.Write("\n");
+
+            if (s1 == s2)
+                Console.WriteLine("s1 == s2");
+            else
+            {
+                Console.WriteLine("s1 != s2");
+            }
+
+            if (s1 == s3)
+                Console.WriteLine("s1 == s3");
+            else
+                Console.WriteLine("s1 != s3");
+
+            result = string.Compare(s3, s1, StringComparison.CurrentCulture);
+            if (result == 0)
+                Console.WriteLine("s1 and s3 is equal");
+            else if (result < 0)
+                Console.WriteLine("s1 < s3");
+            else
+                Console.WriteLine("s1 > s3");
+
+            Console.WriteLine();
+            s2 = "One two  three";
+            idx = s2.IndexOf("One", StringComparison.Ordinal);
+
+            Console.WriteLine("First index of substring: {0}", idx);
+            idx = s2.LastIndexOf("three", StringComparison.Ordinal);
+            Console.WriteLine("Last index of substring: {0}", idx);
         }
     }
 
-    class UseRect {
-        static void Main() {
-            Rect r1 = new Rect(4, 5);
-            Rect r2 = new Rect(7,9);
+    //class Search {
+    //    static void Main() {
+    //        int[] nums = new int[10];
+    //        int val;
+    //        bool found = false;
 
-            Console.WriteLine("Area figure is r1: " + r1.Area());
-            Console.WriteLine("Area figure is r2: " + r2.Area());
-        }
-    }
+    //        for (int i = 0; i < 10; i++)
+    //            nums[i] = i;
+
+    //        val = 5;
+    //        foreach (int x in nums)
+    //        {
+    //            if (x == val) { found = true; break; }
+    //        }
+    //        if (found)
+    //            Console.WriteLine("Value has been found");
+    //    }
+    //}
+    //class AssignARef {
+    //    static void Main()
+    //    {
+    //        int i;
+
+    //        int[] nums1 = new int[10];
+    //        int[] nums2 = new int[10];
+
+    //        for (i = 0; i < 10; i++) nums1[i] = i;
+
+    //        for (i = 0; i < 10; i++) nums2[i] = -i;
+    //        Console.WriteLine("Content array nums1: ");
+    //        for (i = 0; i < 10; i++)
+    //            Console.WriteLine(nums1[i] + " ");
+    //        Console.WriteLine();
+
+    //        Console.WriteLine("Content array nums2: ");
+    //        for (i = 0; i < 10; i++)
+    //            Console.WriteLine(nums2[i] + " ");
+    //        Console.WriteLine();
+
+    //        nums2 = nums1;
+
+    //        Console.Write("Content array nums2\n" + "after =: ");
+    //        for (i = 0; i < 10; i++)
+    //            Console.Write(nums2[i] + " ");
+    //        Console.WriteLine();
+
+    //        nums2[3] = 99;
+
+    //        Console.Write("Content array nums1 after changes\n" + "by variable nums2: ");
+    //        for (i = 0; i < 10; i++)
+    //            Console.Write(nums1[i] + " ");
+    //        Console.WriteLine();
+    //    }
+    //}
+    //class Rect {
+    //    public int Width;
+    //    public int Height;
+
+    //    public Rect(int w, int h)
+    //    {
+    //        Width = w;
+    //        Height = h;
+    //    }
+
+    //    public int Area() {
+    //        return Width * Height;
+    //    }
+    //}
+
+    //class UseRect {
+    //    static void Main() {
+    //        Rect r1 = new Rect(4, 5);
+    //        Rect r2 = new Rect(7,9);
+
+    //        Console.WriteLine("Area figure is r1: " + r1.Area());
+    //        Console.WriteLine("Area figure is r2: " + r2.Area());
+    //    }
+    //}
     //class Building {
 
     //    public int Floors;
