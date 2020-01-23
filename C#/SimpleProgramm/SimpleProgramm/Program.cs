@@ -3,60 +3,130 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
+    class Stack
+    {
+        char[] stck;
+        int tos;
 
-    class StrOps {
+        public Stack(int size)
+        {
+            stck = new char[size];
+            tos = 0;
+        }
+
+        public void Push(char ch)
+        {
+            if (tos == stck.Length)
+            {
+                Console.WriteLine(" - Stack fulled");
+                return;
+            }
+
+            stck[tos] = ch;
+            tos++;
+        }
+
+        public char Pop()
+        {
+            if (tos == 0)
+            {
+                Console.WriteLine("- Stack empty");
+                return (char)0;
+            }
+
+            tos--;
+            return stck[tos];
+        }
+
+        public bool IsFull()
+        {
+            return tos == stck.Length;
+        }
+
+        public bool IsEmpty()
+        {
+            return tos == 0;
+        }
+
+        public int Capacity()
+        {
+            return stck.Length;
+        }
+
+        public int GetNum() {
+            return tos;
+        }
+
+    }
+
+    class StackDemo {
         static void Main()
         {
-            string s1 = "Coding in .net much better on C#";
-            string s2 = "Coding in .net much better on C#";
-            string s3 = "String in C# more effective";
-            string strUP, strLow;
-            int result, idx;
+            Stack stk1 = new Stack(10);
+            Stack stk2 = new Stack(10);
+            Stack stk3 = new Stack(10);
+            char ch;
+            int i;
 
-            Console.WriteLine("s1: " + s1);
-            Console.WriteLine("Length s1: "+ s1.Length);
-
-            strLow = s1.ToLower(CultureInfo.CurrentCulture);
-            strUP = s2.ToUpper(CultureInfo.CurrentCulture);
-            Console.WriteLine(strUP);
-            Console.WriteLine(strLow);
-            Console.WriteLine();
-
-            for(int i = 0; i< s1.Length; i++)
-                {
-                Console.Write(s1[i]);
-            }
-            Console.Write("\n");
-
-            if (s1 == s2)
-                Console.WriteLine("s1 == s2");
-            else
-            {
-                Console.WriteLine("s1 != s2");
-            }
-
-            if (s1 == s3)
-                Console.WriteLine("s1 == s3");
-            else
-                Console.WriteLine("s1 != s3");
-
-            result = string.Compare(s3, s1, StringComparison.CurrentCulture);
-            if (result == 0)
-                Console.WriteLine("s1 and s3 is equal");
-            else if (result < 0)
-                Console.WriteLine("s1 < s3");
-            else
-                Console.WriteLine("s1 > s3");
-
-            Console.WriteLine();
-            s2 = "One two  three";
-            idx = s2.IndexOf("One", StringComparison.Ordinal);
-
-            Console.WriteLine("First index of substring: {0}", idx);
-            idx = s2.LastIndexOf("three", StringComparison.Ordinal);
-            Console.WriteLine("Last index of substring: {0}", idx);
+            Console.WriteLine("Put symbols inside of the stack A-J stk1");
+            for (i = 0; !stk1.IsFull(); i++)
+                stk1.Push((char)('A' + i));
         }
     }
+
+    //class StrOps {
+    //    static void Main()
+    //    {
+    //        string s1 = "Coding in .net much better on C#";
+    //        string s2 = "Coding in .net much better on C#";
+    //        string s3 = "String in C# more effective";
+    //        string strUP, strLow;
+    //        int result, idx;
+
+    //        Console.WriteLine("s1: " + s1);
+    //        Console.WriteLine("Length s1: "+ s1.Length);
+
+    //        strLow = s1.ToLower(CultureInfo.CurrentCulture);
+    //        strUP = s2.ToUpper(CultureInfo.CurrentCulture);
+    //        Console.WriteLine(strUP);
+    //        Console.WriteLine(strLow);
+    //        Console.WriteLine();
+
+    //        for(int i = 0; i< s1.Length; i++)
+    //            {
+    //            Console.Write(s1[i]);
+    //        }
+    //        Console.Write("\n");
+
+    //        if (s1 == s2)
+    //            Console.WriteLine("s1 == s2");
+    //        else
+    //        {
+    //            Console.WriteLine("s1 != s2");
+    //        }
+
+    //        if (s1 == s3)
+    //            Console.WriteLine("s1 == s3");
+    //        else
+    //            Console.WriteLine("s1 != s3");
+
+    //        result = string.Compare(s3, s1, StringComparison.CurrentCulture);
+    //        if (result == 0)
+    //            Console.WriteLine("s1 and s3 is equal");
+    //        else if (result < 0)
+    //            Console.WriteLine("s1 < s3");
+    //        else
+    //            Console.WriteLine("s1 > s3");
+
+    //        Console.WriteLine();
+    //        s2 = "One two  three";
+    //        idx = s2.IndexOf("One", StringComparison.Ordinal);
+
+    //        Console.WriteLine("First index of substring: {0}", idx);
+    //        idx = s2.LastIndexOf("three", StringComparison.Ordinal);
+    //        Console.WriteLine("Last index of substring: {0}", idx);
+    //    }
+    //}
 
     //class Search {
     //    static void Main() {
