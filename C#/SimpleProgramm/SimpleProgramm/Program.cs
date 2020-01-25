@@ -3,76 +3,224 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class Stack
+    class Test
     {
-        char[] stck;
-        int tos;
+        public int a, b;
 
-        public Stack(int size)
+        public Test(int i, int j)
         {
-            stck = new char[size];
-            tos = 0;
+            a = i;
+            b = j;
         }
-
-        public void Push(char ch)
+        public void Change(Test ob)
         {
-            if (tos == stck.Length)
-            {
-                Console.WriteLine(" - Stack fulled");
-                return;
-            }
-
-            stck[tos] = ch;
-            tos++;
+            ob.a = ob.a + ob.b;
+            ob.b = -ob.b;
         }
-
-        public char Pop()
-        {
-            if (tos == 0)
-            {
-                Console.WriteLine("- Stack empty");
-                return (char)0;
-            }
-
-            tos--;
-            return stck[tos];
-        }
-
-        public bool IsFull()
-        {
-            return tos == stck.Length;
-        }
-
-        public bool IsEmpty()
-        {
-            return tos == 0;
-        }
-
-        public int Capacity()
-        {
-            return stck.Length;
-        }
-
-        public int GetNum() {
-            return tos;
-        }
-
     }
-
-    class StackDemo {
+    class CallByRef
+    {
         static void Main()
         {
-            Stack stk1 = new Stack(10);
-            Stack stk2 = new Stack(10);
-            Stack stk3 = new Stack(10);
-            char ch;
-            int i;
+            Test ob = new Test(15, 20);
+            Console.WriteLine("ob.a and ob.b before call: " + ob.a + " " + ob.b);
+            ob.Change(ob);
+            Console.WriteLine("ob.a and ob.b after call: " + ob.a + " " + ob.b);
 
-            Console.WriteLine("Put symbols inside of the stack A-J stk1");
-            for (i = 0; !stk1.IsFull(); i++)
-                stk1.Push((char)('A' + i));
+
         }
     }
+
+    //class Test
+    //{
+    //    public void NoChange(int i, int j)
+    //    {
+    //        i = i + j;
+    //        j = -j;
+
+    //    }
+    //}
+
+    //class CallByValue {
+    //    static void Main()
+    //    {
+    //        Test ob = new Test();
+    //        int a = 15, b = 20;
+
+    //        Console.WriteLine("a and b before call: " + a + "" + b);
+    //        ob.NoChange(a, b);
+    //        Console.WriteLine("a and b after call: " + a + "" + b);
+    //    }
+    //}
+    //class MyClass{
+    //    int alpha, beta;
+
+    //    public MyClass(int i, int j)
+    //    {
+    //        alpha = i;
+    //        beta = j;
+    //    }
+
+    //    public bool SameAs(MyClass ob)
+    //    {
+    //        if ((ob.alpha == alpha) & (ob.beta == beta))
+    //            return true;
+    //        else return false;
+    //    }
+
+    //    //make a copy of object ob
+    //    public void Copy(MyClass ob)
+    //    {
+    //        alpha = ob.alpha;
+    //        beta = ob.beta;
+    //    }
+
+    //    public void Show()
+    //    {
+    //        Console.WriteLine("alpha: {0}, beta: {1}", alpha,beta);
+    //    }
+    //}
+
+    //class PassOb {
+    //    static void Main()
+    //    {
+    //        MyClass ob1 = new MyClass(4,5);
+    //        MyClass ob2 = new MyClass(6,7);
+
+    //        Console.Write("ob1: ");
+    //        ob1.Show();
+            
+    //        Console.Write("ob2: ");
+    //        ob2.Show();
+
+    //        if (ob1.SameAs(ob2))
+    //            Console.WriteLine("ob1 and ob2 are equalent value");
+    //        else
+    //            Console.WriteLine("ob1 and ob2 have different values");
+
+
+    //        Console.WriteLine();
+
+    //        ob1.Copy(ob2);
+    //        Console.WriteLine("after coped ob1 show");
+    //        ob1.Show();
+
+    //        if (ob1.SameAs(ob2))
+    //            Console.WriteLine("ob1 and ob2 are equalent values");
+    //        else
+    //            Console.WriteLine("ob1 and ob2 have different values");
+
+    //    }
+    //}
+    //class Stack
+    //{
+    //    char[] stck;
+    //    int tos;
+
+    //    public Stack(int size)
+    //    {
+    //        stck = new char[size];
+    //        tos = 0;
+    //    }
+
+    //    public void Push(char ch)
+    //    {
+    //        if (tos == stck.Length)
+    //        {
+    //            Console.WriteLine(" - Stack fulled");
+    //            return;
+    //        }
+
+    //        stck[tos] = ch;
+    //        tos++;
+    //    }
+
+    //    public char Pop()
+    //    {
+    //        if (tos == 0)
+    //        {
+    //            Console.WriteLine("- Stack empty");
+    //            return (char)0;
+    //        }
+
+    //        tos--;
+    //        return stck[tos];
+    //    }
+
+    //    public bool IsFull()
+    //    {
+    //        return tos == stck.Length;
+    //    }
+
+    //    public bool IsEmpty()
+    //    {
+    //        return tos == 0;
+    //    }
+
+    //    public int Capacity()
+    //    {
+    //        return stck.Length;
+    //    }
+
+    //    public int GetNum() {
+    //        return tos;
+    //    }
+
+    //}
+
+    //class StackDemo {
+    //    static void Main()
+    //    {
+    //        Stack stk1 = new Stack(10);
+    //        Stack stk2 = new Stack(10);
+    //        Stack stk3 = new Stack(10);
+    //        char ch;
+    //        int i;
+
+    //        Console.WriteLine("Put symbols inside of the stack A-J stk1");
+    //        for (i = 0; !stk1.IsFull(); i++)
+    //            stk1.Push((char)('A' + i));
+
+    //        if (stk1.IsFull()) Console.WriteLine("Stack stk1 is full");
+
+    //        Console.Write("Contains of stack stk1: ");
+    //        while (!stk1.IsEmpty())
+    //        {
+    //            ch = stk1.Pop();
+    //            Console.Write(ch);
+    //        }
+
+    //        Console.WriteLine();
+
+    //        if (stk1.IsEmpty()) Console.WriteLine("Stack stk1 is empty");
+    //        Console.WriteLine("Put symbols into stack A-J again stk1");
+    //        for (i = 0; !stk1.IsFull(); i++)
+    //            stk1.Push((char)('A' + i));
+
+            
+    //        Console.WriteLine("And now pop elements from the stack stk1 and put them into stk2");
+    //        while (!stk1.IsEmpty())
+    //        {
+    //            ch = stk1.Pop();
+    //            stk2.Push(ch);
+    //        }
+    //        Console.WriteLine("Stack stk2 include: ");
+    //        while (stk2.IsEmpty())
+    //        {
+    //            ch = stk2.Pop();
+    //            Console.Write(ch);
+    //        }
+
+    //        Console.WriteLine("\n");
+    //        Console.WriteLine("Put  5 symbols inside of stack");
+    //        for (i = 0; i < 5; i++)
+    //        {
+    //            stk3.Push((char)('A' + i));
+    //            Console.WriteLine("Capacity of stk3 is: " + stk3.Capacity());
+    //            Console.WriteLine("Objects inside of stk3 is :" + stk3.GetNum());
+    //        }
+    //    }
+    //}
 
     //class StrOps {
     //    static void Main()
