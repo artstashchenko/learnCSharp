@@ -3,33 +3,225 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class Test
-    {
-        public int a, b;
 
-        public Test(int i, int j)
+    class RefSwap
+    {
+        int a, b;
+
+        public RefSwap(int i, int j)
         {
             a = i;
             b = j;
         }
-        public void Change(Test ob)
+
+        public void Show()
         {
-            ob.a = ob.a + ob.b;
-            ob.b = -ob.b;
+            Console.WriteLine("a: {0}, b: {1}", a,b);
+        }
+
+        public void Swap(ref RefSwap ob1, ref RefSwap ob2)
+        {
+            RefSwap t;
+
+            t = ob1;
+            ob1 = ob2;
+            ob2 = t;
         }
     }
-    class CallByRef
-    {
+
+    class RefSwapDemo {
         static void Main()
         {
-            Test ob = new Test(15, 20);
-            Console.WriteLine("ob.a and ob.b before call: " + ob.a + " " + ob.b);
-            ob.Change(ob);
-            Console.WriteLine("ob.a and ob.b after call: " + ob.a + " " + ob.b);
+            RefSwap x = new RefSwap(1,2);
+            RefSwap y = new RefSwap(3, 4);
 
+            Console.Write("x before call: ");
+            x.Show();
 
+            Console.Write("y before call: ");
+            y.Show();
+
+            Console.WriteLine();
+
+            x.Swap(ref x, ref y);
+
+            Console.Write("x before call: ");
+            x.Show();
+
+            Console.Write("y before call: ");
+            y.Show();
         }
     }
+    //class Num {
+    //    public bool HasComFactor(int x, int y, out int least, out int greatest)
+    //    {
+    //        int i;
+    //        int max = x < y ? x : y;
+    //        bool first = true;
+
+    //        least = 1;
+    //        greatest = 1;
+
+    //        for (i = 2; i <= max/2 + 1; i++)
+    //        {
+    //            if (((y % i) == 0) & ((x % i) == 0))
+    //            {
+    //                if (first)
+    //                {
+    //                    least = i;
+    //                    first = false;
+
+    //                }
+    //                greatest = i;
+    //            }
+    //        }
+    //        if (least != 1) return true;
+    //        else return false;
+    //      }
+    //}
+
+    //class DemoOut
+    //{
+    //    static void Main()
+    //    {
+    //        Num ob = new Num();
+    //        int lcf, gcf;
+
+    //        if (ob.HasComFactor(231, 105, out lcf, out gcf))
+    //        {
+    //            Console.WriteLine("Least common factor" + "digits 231 and 105 is: " + lcf);
+    //            Console.WriteLine("Greatest common factor" + "digits 231 and 105 is: " + gcf);
+    //        }
+    //    }
+    //}
+    //class Decompose {
+    //    public int GetParts(double n, out double frac)
+    //    {
+    //        int whole;
+    //        whole = (int)n;
+    //        frac = n - whole;
+    //        return whole;
+    //    }
+    //}
+
+    //class UseOut
+    //{
+    //    static void Main()
+    //    {
+    //        Decompose ob = new Decompose();
+    //        int i;
+    //        double f;
+
+    //        i = ob.GetParts(10.125, out f);
+
+    //        Console.WriteLine("Whole part is equal: " + i);
+    //        Console.WriteLine("Not whole part is equal: " + f);
+    //    }
+
+    //}
+    //class RefTest {
+    //    public void Sqr(ref int i)
+    //    {
+    //        i = i * i;
+    //    }
+    //}
+
+    //class RefDemo {
+    //    static void Main()
+    //    {
+    //        RefTest ob = new RefTest();
+    //        int a = 10;
+
+    //        Console.WriteLine("a befor call: " + a);
+
+    //        ob.Sqr(ref a);
+
+    //        Console.WriteLine("a after call: " + a);
+
+
+    //    }
+    //}
+    //class Test {
+    //    public int a, b;
+
+    //    public Test(int i, int j)
+    //    {
+    //        a = i;
+    //        b = j;
+    //    }
+
+    //    public void Change(Test ob)
+    //    {
+    //        ob.a = ob.a + ob.b;
+    //        ob.b = -ob.b;
+    //    }
+    //}
+
+    //class CallByRef {
+    //    static void Main()
+    //    {
+    //        Test ob = new Test(15,20);
+
+    //        Console.WriteLine("ob.a and ob.b before call: " + ob.a + " " + ob.b);
+
+    //        ob.Change(ob);
+            
+    //        Console.WriteLine("ob.a and ob.b after call: " + ob.a + " " + ob.b);
+
+
+
+    //    }
+    //}
+//    class Test {
+//        public void NoChange(int i, int j)
+//        {
+//            i = i + j;
+//            j = -j;
+
+//        }
+//    }
+
+//    class CallByValue
+//        {
+//    static void Main()
+//    {
+//        Test ob = new Test();
+//        int a = 15, b = 20;
+
+//        Console.WriteLine("a and b before call: " + a + " " + b);
+
+//         ob.NoChange(a,b);
+
+//            Console.WriteLine("a and b after call: " + a + " " + b);
+//    }
+//}
+    //class Test
+    //{
+    //    public int a, b;
+
+    //    public Test(int i, int j)
+    //    {
+    //        a = i;
+    //        b = j;
+    //    }
+    //    public void Change(Test ob)
+    //    {
+    //        ob.a = ob.a + ob.b;
+    //        ob.b = -ob.b;
+    //    }
+    //}
+    //class CallByRef
+    //{
+    //    static void Main()
+    //    {
+    //        Test ob = new Test(15, 20);
+    //        Console.WriteLine("ob.a and ob.b before call: " + ob.a + " " + ob.b);
+    //        ob.Change(ob);
+    //        Console.WriteLine("ob.a and ob.b after call: " + ob.a + " " + ob.b);
+
+
+    //    }
+    //}
 
     //class Test
     //{
