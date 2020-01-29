@@ -4,54 +4,119 @@ using System.Globalization;
 namespace SimpleProgramm
 {
 
-    class RefSwap
-    {
-        int a, b;
+    class XYCoord {
+        public int x, y;
 
-        public RefSwap(int i, int j)
+        public XYCoord() : this(0, 0)
         {
-            a = i;
-            b = j;
+            Console.WriteLine("Inside constr XYCoord()");
+           }
+
+        public XYCoord(XYCoord obj) : this(obj.x, obj.y)
+        {
+            Console.WriteLine("Inside constr XYCoord(obj)");
         }
 
-        public void Show()
+        public XYCoord(int i, int j)
         {
-            Console.WriteLine("a: {0}, b: {1}", a,b);
-        }
-
-        public void Swap(ref RefSwap ob1, ref RefSwap ob2)
-        {
-            RefSwap t;
-
-            t = ob1;
-            ob1 = ob2;
-            ob2 = t;
+            Console.WriteLine("Inside constr XYCoord (int, int)");
+            x = i;
+            y = j;
         }
     }
 
-    class RefSwapDemo {
-        static void Main()
-        {
-            RefSwap x = new RefSwap(1,2);
-            RefSwap y = new RefSwap(3, 4);
+    class OverloadConsDemo {
+        static void Main() {
+            XYCoord t1 = new XYCoord();
+            XYCoord t2 = new XYCoord(8, 9);
+            XYCoord t3 = new XYCoord(t2);
 
-            Console.Write("x before call: ");
-            x.Show();
-
-            Console.Write("y before call: ");
-            y.Show();
-
-            Console.WriteLine();
-
-            x.Swap(ref x, ref y);
-
-            Console.Write("x before call: ");
-            x.Show();
-
-            Console.Write("y before call: ");
-            y.Show();
+            Console.WriteLine("t1.x, t1.y: " + t1.x + ", " + t1.y);
+            Console.WriteLine("t2.x, t2.y: " + t2.x + ", " + t2.y);
+            Console.WriteLine("t3.x, t3.y: " + t3.x + ", " + t3.y);
         }
     }
+    //class MyClass
+    //{
+    //    int a, b;
+
+    //    public MyClass Factory(int i, int j)
+    //    {
+    //        MyClass t = new MyClass();
+    //        t.a = i;
+    //        t.b = j;
+
+    //        return t;
+    //    }
+
+    //    public void Show()
+    //    {
+    //        Console.WriteLine("a and b: " + a + " " + b);
+    //    }
+    //}
+
+    //class MakeObjects {
+    //    static void Main()
+    //    {
+    //        MyClass ob = new MyClass();
+    //        int i, j;
+
+    //        for (i = 0, j = 10; i < 10; i++, j--)
+    //        {
+    //            MyClass anotherOb = ob.Factory(i, j);
+    //            anotherOb.Show();
+    //        }
+    //        Console.WriteLine();
+    //    }
+    //}
+    //class RefSwap
+    //{
+    //    int a, b;
+
+    //    public RefSwap(int i, int j)
+    //    {
+    //        a = i;
+    //        b = j;
+    //    }
+
+    //    public void Show()
+    //    {
+    //        Console.WriteLine("a: {0}, b: {1}", a,b);
+    //    }
+
+    //    public void Swap(ref RefSwap ob1, ref RefSwap ob2)
+    //    {
+    //        RefSwap t;
+
+    //        t = ob1;
+    //        ob1 = ob2;
+    //        ob2 = t;
+    //    }
+    //}
+
+    //class RefSwapDemo {
+    //    static void Main()
+    //    {
+    //        RefSwap x = new RefSwap(1,2);
+    //        RefSwap y = new RefSwap(3, 4);
+
+    //        Console.Write("x before call: ");
+    //        x.Show();
+
+    //        Console.Write("y before call: ");
+    //        y.Show();
+
+    //        Console.WriteLine();
+
+    //        x.Swap(ref x, ref y);
+
+    //        Console.Write("x before call: ");
+    //        x.Show();
+
+    //        Console.Write("y before call: ");
+    //        y.Show();
+    //    }
+    //}
     //class Num {
     //    public bool HasComFactor(int x, int y, out int least, out int greatest)
     //    {
