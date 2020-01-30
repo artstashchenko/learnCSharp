@@ -3,39 +3,119 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-
-    class XYCoord {
-        public int x, y;
-
-        public XYCoord() : this(0, 0)
+    class RevStr
+    {
+        public void DisplayRev(string str)
         {
-            Console.WriteLine("Inside constr XYCoord()");
-           }
+            if (str.Length > 0)
+            {
+                DisplayRev(str.Substring(1, str.Length - 1));
+            }
+            else
+            {
+                return;
+            }
 
-        public XYCoord(XYCoord obj) : this(obj.x, obj.y)
-        {
-            Console.WriteLine("Inside constr XYCoord(obj)");
-        }
-
-        public XYCoord(int i, int j)
-        {
-            Console.WriteLine("Inside constr XYCoord (int, int)");
-            x = i;
-            y = j;
+            Console.Write(str[0]);
         }
     }
+    class RevStrDemoP
+    {
 
-    class OverloadConsDemo {
-        static void Main() {
-            XYCoord t1 = new XYCoord();
-            XYCoord t2 = new XYCoord(8, 9);
-            XYCoord t3 = new XYCoord(t2);
+        static void Main()
+        {
+            string s = "This is a test";
+            RevStr rsOb = new RevStr();
 
-            Console.WriteLine("t1.x, t1.y: " + t1.x + ", " + t1.y);
-            Console.WriteLine("t2.x, t2.y: " + t2.x + ", " + t2.y);
-            Console.WriteLine("t3.x, t3.y: " + t3.x + ", " + t3.y);
+            Console.WriteLine("Current string: " + s);
+            Console.WriteLine("Current rev string: ");
+            rsOb.DisplayRev(s);
+
+            Console.WriteLine();
         }
     }
+    //class Factorial {
+    //    public int FactR(int n)
+    //    {
+    //        int result;
+
+    //        if (n == 1) return 1;
+    //        result = FactR(n - 1) * n;
+    //        return result;
+    //    }
+    //        public int FactI(int n) {
+    //            int t, result;
+
+    //            result = 1;
+    //            for (t = 1; t <= n; t++) result *= t;
+    //            return result;
+    //        }
+    //    }
+
+    //class Recursion {
+    //    static void Main() {
+    //        Factorial f = new Factorial();
+    //        Console.WriteLine("Factorial with recursion method used");
+    //        Console.WriteLine("Factorial number 3 equals " + f.FactR(3));
+    //        Console.WriteLine("Factorial number 4 equals " + f.FactR(4));
+    //        Console.WriteLine("Factorial number 5 equals " + f.FactR(5));
+    //        Console.WriteLine();
+
+    //        Console.WriteLine("Factorial with recursion method used");
+    //        Console.WriteLine("Factorial number 3 equals " + f.FactI(3));
+    //        Console.WriteLine("Factorial number 4 equals " + f.FactI(4));
+    //        Console.WriteLine("Factorial number 5 equals " + f.FactI(5));
+    //        Console.WriteLine();
+    //    }
+    //}
+ 
+    //class Cipher {
+    //    static void Main(string[] args)
+    //    {
+    //        if (args.Length < 2)
+    //        { 
+            
+    //        }
+    //        Console.WriteLine("There are: ");
+    //        for (int i = 0; i < args.Length; i++)
+    //        {
+    //            Console.WriteLine(args[i]);
+    //        }
+    //    }
+    //}
+
+    //class XYCoord {
+    //    public int x, y;
+
+    //    public XYCoord() : this(0, 0)
+    //    {
+    //        Console.WriteLine("Inside constr XYCoord()");
+    //       }
+
+    //    public XYCoord(XYCoord obj) : this(obj.x, obj.y)
+    //    {
+    //        Console.WriteLine("Inside constr XYCoord(obj)");
+    //    } 
+
+    //    public XYCoord(int i, int j)
+    //    {
+    //        Console.WriteLine("Inside constr XYCoord (int, int)");
+    //        x = i;
+    //        y = j;
+    //    }
+    //}
+
+    //class OverloadConsDemo {
+    //    static void Main() {
+    //        XYCoord t1 = new XYCoord();
+    //        XYCoord t2 = new XYCoord(8, 9);
+    //        XYCoord t3 = new XYCoord(t2);
+
+    //        Console.WriteLine("t1.x, t1.y: " + t1.x + ", " + t1.y);
+    //        Console.WriteLine("t2.x, t2.y: " + t2.x + ", " + t2.y);
+    //        Console.WriteLine("t3.x, t3.y: " + t3.x + ", " + t3.y);
+    //    }
+    //}
     //class MyClass
     //{
     //    int a, b;
