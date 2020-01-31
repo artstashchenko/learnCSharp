@@ -3,37 +3,95 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class RevStr
-    {
-        public void DisplayRev(string str)
-        {
-            if (str.Length > 0)
-            {
-                DisplayRev(str.Substring(1, str.Length - 1));
-            }
-            else
-            {
-                return;
-            }
+    class Thread {
+        int x, y, z;
 
-            Console.Write(str[0]);
+        public Thread() { x = y = z = 0; }
+        public Thread(int i, int j, int k) { x = i; y = j;z = k; }
+
+        public static Thread operator +(Thread op1, Thread op2)
+        {
+            Thread result = new Thread();
+
+            result.x = op1.x + op2.x;
+            result.x = op1.y + op2.y;
+            result.x = op1.z + op2.z;
+
+            return result;
+
+        }
+
+        public static implicit operator int(Thread op1)
+        {
+            return op1.x * op1.y * op1.z;
+        }
+
+        public void Show()
+        {
+            Console.WriteLine(x + ", " + y + ", " + z);
         }
     }
-    class RevStrDemoP
-    {
 
-        static void Main()
-        {
-            string s = "This is a test";
-            RevStr rsOb = new RevStr();
+    class ThreadDemo {
+        static void Main() {
+            Thread a = new Thread(1,2,3);
+            Thread b = new Thread(10, 10, 10);
+            Thread c = new Thread();
+            int i;
 
-            Console.WriteLine("Current string: " + s);
-            Console.WriteLine("Current rev string: ");
-            rsOb.DisplayRev(s);
-
+            Console.Write("Coordinate dot a: ");
+            a.Show();
             Console.WriteLine();
+            Console.Write("Coordinate dot b: ");
+            b.Show();
+            Console.WriteLine();
+            
+            c = a + b;
+            Console.WriteLine("a+b result");
+            c.Show();
+            Console.WriteLine();
+
+            i = a;
+            Console.WriteLine("Result of i = a: " + i);
+            Console.WriteLine();
+
+            i = a * 2 - b;
+
+
+
         }
     }
+    //class RevStr
+    //{
+    //    public void DisplayRev(string str)
+    //    {
+    //        if (str.Length > 0)
+    //        {
+    //            DisplayRev(str.Substring(1, str.Length - 1));
+    //        }
+    //        else
+    //        {
+    //            return;
+    //        }
+
+    //        Console.Write(str[0]);
+    //    }
+    //}
+    //class RevStrDemoP
+    //{
+
+    //    static void Main()
+    //    {
+    //        string s = "This is a test";
+    //        RevStr rsOb = new RevStr();
+
+    //        Console.WriteLine("Current string: " + s);
+    //        Console.WriteLine("Current rev string: ");
+    //        rsOb.DisplayRev(s);
+
+    //        Console.WriteLine();
+    //    }
+    //}
     //class Factorial {
     //    public int FactR(int n)
     //    {
