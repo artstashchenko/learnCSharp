@@ -3,64 +3,128 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class Thread {
-        int x, y, z;
 
-        public Thread() { x = y = z = 0; }
-        public Thread(int i, int j, int k) { x = i; y = j;z = k; }
+    class FailSoftArray {
+        int[] a;
+        int len;
 
-        public static Thread operator +(Thread op1, Thread op2)
+        public bool ErrFlg;
+
+        public FailSoftArray(int size)
         {
-            Thread result = new Thread();
-
-            result.x = op1.x + op2.x;
-            result.x = op1.y + op2.y;
-            result.x = op1.z + op2.z;
-
-            return result;
-
+            a = new int[size];
+            len = size;
         }
 
-        public static implicit operator int(Thread op1)
-        {
-            return op1.x * op1.y * op1.z;
+        public int Length1 {
+            get { return len; }
         }
 
-        public void Show()
+        public int this[int index]
         {
-            Console.WriteLine(x + ", " + y + ", " + z);
+            get { if(ok(index))
+                { 
+                    ErrFlg = false;
+                    return a[index];
+                }
+                else
+                {
+                    ErrFlg = true;
+                    return 0;
+                }
+              }
+            set {
+                if (ok(index))
+                {
+                    a[index] = value;
+                    ErrFlg = false;
+                }
+                else ErrFlg = true;
+            }
+        }
+
+        private bool ok(int index)
+        {
+            if (index >= 0 & index < Length1) return true;
+            return false;
         }
     }
 
-    class ThreadDemo {
-        static void Main() {
-            Thread a = new Thread(1,2,3);
-            Thread b = new Thread(10, 10, 10);
-            Thread c = new Thread();
-            int i;
+    class ImprovedFSDemo {
+        static void Main()
+        {
+            FailSoftArray fs = new FailSoftArray(5);
+            int x;
 
-            Console.Write("Coordinate dot a: ");
-            a.Show();
-            Console.WriteLine();
-            Console.Write("Coordinate dot b: ");
-            b.Show();
-            Console.WriteLine();
+            for (int i = 0; i < fs.Length1; i++)
+                fs[i] = i * 10;
+
+            for (int i = 0; i < fs.Length1; i++)
+            {
+                x = fs[i];
+                if (x != -1) Console.Write(x + " ");
+            }
+            Console.WriteLine();            
+        }
+    }
+    //class Thread {
+    //    int x, y, z;
+
+    //    public Thread() { x = y = z = 0; }
+    //    public Thread(int i, int j, int k) { x = i; y = j;z = k; }
+
+    //    public static Thread operator +(Thread op1, Thread op2)
+    //    {
+    //        Thread result = new Thread();
+
+    //        result.x = op1.x + op2.x;
+    //        result.x = op1.y + op2.y;
+    //        result.x = op1.z + op2.z;
+
+    //        return result;
+
+    //    }
+
+    //    public static implicit operator int(Thread op1)
+    //    {
+    //        return op1.x * op1.y * op1.z;
+    //    }
+
+    //    public void Show()
+    //    {
+    //        Console.WriteLine(x + ", " + y + ", " + z);
+    //    }
+    //}
+
+    //class ThreadDemo {
+    //    static void Main() {
+    //        Thread a = new Thread(1,2,3);
+    //        Thread b = new Thread(10, 10, 10);
+    //        Thread c = new Thread();
+    //        int i;
+
+    //        Console.Write("Coordinate dot a: ");
+    //        a.Show();
+    //        Console.WriteLine();
+    //        Console.Write("Coordinate dot b: ");
+    //        b.Show();
+    //        Console.WriteLine();
             
-            c = a + b;
-            Console.WriteLine("a+b result");
-            c.Show();
-            Console.WriteLine();
+    //        c = a + b;
+    //        Console.WriteLine("a+b result");
+    //        c.Show();
+    //        Console.WriteLine();
 
-            i = a;
-            Console.WriteLine("Result of i = a: " + i);
-            Console.WriteLine();
+    //        i = a;
+    //        Console.WriteLine("Result of i = a: " + i);
+    //        Console.WriteLine();
 
-            i = a * 2 - b;
+    //        i = a * 2 - b;
 
 
 
-        }
-    }
+    //    }
+    //}
     //class RevStr
     //{
     //    public void DisplayRev(string str)
