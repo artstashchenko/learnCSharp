@@ -4,69 +4,161 @@ using System.Globalization;
 namespace SimpleProgramm
 {
 
-    class FailSoftArray {
+    class RangeArray {
         int[] a;
-        int len;
+        int lowerBound;
+        int upperBound;
 
-        public bool ErrFlg;
+        public int Length { get; private set; }
+        public bool Error { get; private set; }
 
-        public FailSoftArray(int size)
+        public RangeArray(int low, int high)
         {
-            a = new int[size];
-            len = size;
-        }
+            high++;
+            if (high <= low)
+            {
+                Console.WriteLine("Wrong indexes");
+                high = 1;
+                low = 0;
+            }
+            a = new int[high - low];
+            Length = high - low;
 
-        public int Length1 {
-            get { return len; }
-        }
+            lowerBound = low;
+            upperBound = --high;
 
-        public int this[int index]
+            public int this[int index]
         {
-            get { if(ok(index))
-                { 
-                    ErrFlg = false;
-                    return a[index];
+            get
+            {
+                if (ok(index))
+                {
+                    Error = false;
+                    return a[index - lowerBound];
+
                 }
                 else
                 {
-                    ErrFlg = true;
+                    Error = true;
                     return 0;
                 }
-              }
-            set {
+            }
+            set
+            {
                 if (ok(index))
                 {
-                    a[index] = value;
-                    ErrFlg = false;
+                    a[index - lowerBound] = value;
+                    Error = false;
                 }
-                else ErrFlg = true;
+                else
+                {
+                    Error = true;
+                }
+
             }
         }
-
-        private bool ok(int index)
+            private bool ok(int index)
         {
-            if (index >= 0 & index < Length1) return true;
+            if (index >= lowerBound & index <= upperBound) return true;
             return false;
         }
+
     }
 
-    class ImprovedFSDemo {
+    class RangeArrayDemo {
         static void Main()
         {
-            FailSoftArray fs = new FailSoftArray(5);
-            int x;
+            RangeArray ra = new RangeArray(-5, 5);
+            RangeArray ra2 = new RangeArray(1, 10);
+            RangeArray ra3 = new RangeArray(-20, -12);
 
-            for (int i = 0; i < fs.Length1; i++)
-                fs[i] = i * 10;
-
-            for (int i = 0; i < fs.Length1; i++)
+            Console.WriteLine("Leingh of array ra: " + ra.Length);
+            for (int i = -5; i <= 5; i++)
             {
-                x = fs[i];
-                if (x != -1) Console.Write(x + " ");
+                ra[i] = i;
             }
-            Console.WriteLine();            
+            Console.WriteLine("ra include the following: ");
+            for (int i = -5; i <= 5; i++)
+            {
+                Console.WriteLine(ra[i] + " ");
+                Console.WriteLine("\n");
+            }
+
+            Console.WriteLine("Length of array ra2 is: " + ra2.Length);
+            for (int i = 1; i <= 10; i++)
+            {
+                ra2[i] = i;
+            }
+
+            Console.WriteLine("ra2 include the following: ");
+            for (int i = 1; i <= 10; i++)
+                Console.WriteLine(ra2[i] + " "); 
+
         }
     }
+    //class FailSoftArray {
+    //    int[] a;
+    //    int len;
+
+    //    public bool ErrFlg;
+
+    //    public FailSoftArray(int size)
+    //    {
+    //        a = new int[size];
+    //        len = size;
+    //    }
+
+    //    public int Length1 {
+    //        get { return len; }
+    //    }
+
+    //    public int this[int index]
+    //    {
+    //        get { if(ok(index))
+    //            { 
+    //                ErrFlg = false;
+    //                return a[index];
+    //            }
+    //            else
+    //            {
+    //                ErrFlg = true;
+    //                return 0;
+    //            }
+    //          }
+    //        set {
+    //            if (ok(index))
+    //            {
+    //                a[index] = value;
+    //                ErrFlg = false;
+    //            }
+    //            else ErrFlg = true;
+    //        }
+    //    }
+
+    //    private bool ok(int index)
+    //    {
+    //        if (index >= 0 & index < Length1) return true;
+    //        return false;
+    //    }
+    //}
+
+    //class ImprovedFSDemo {
+    //    static void Main()
+    //    {
+    //        FailSoftArray fs = new FailSoftArray(5);
+    //        int x;
+
+    //        for (int i = 0; i < fs.Length1; i++)
+    //            fs[i] = i * 10;
+
+    //        for (int i = 0; i < fs.Length1; i++)
+    //        {
+    //            x = fs[i];
+    //            if (x != -1) Console.Write(x + " ");
+    //        }
+    //        Console.WriteLine();            
+    //    }
+    //}
     //class Thread {
     //    int x, y, z;
 
