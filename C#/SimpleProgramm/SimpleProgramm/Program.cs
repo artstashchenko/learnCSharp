@@ -3,99 +3,362 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
+    class TwoDShape {
+        double pri_width;
+        double pri_height;
 
-    class RangeArray {
-        int[] a;
-        int lowerBound;
-        int upperBound;
-
-        public int Length { get; private set; }
-        public bool Error { get; private set; }
-
-        public RangeArray(int low, int high)
+        public TwoDShape()
         {
-            high++;
-            if (high <= low)
-            {
-                Console.WriteLine("Wrong indexes");
-                high = 1;
-                low = 0;
-            }
-            a = new int[high - low];
-            Length = high - low;
-
-            lowerBound = low;
-            upperBound = --high;
-
-            public int this[int index]
-        {
-            get
-            {
-                if (ok(index))
-                {
-                    Error = false;
-                    return a[index - lowerBound];
-
-                }
-                else
-                {
-                    Error = true;
-                    return 0;
-                }
-            }
-            set
-            {
-                if (ok(index))
-                {
-                    a[index - lowerBound] = value;
-                    Error = false;
-                }
-                else
-                {
-                    Error = true;
-                }
-
-            }
+            Width = Height = 0.0;
+            name = "null";
         }
-            private bool ok(int index)
+
+        public TwoDShape(double w, double h, string n)
         {
-            if (index >= lowerBound & index <= upperBound) return true;
+            Width = w;
+            Height = h;
+            name = n;
+        }
+
+        public TwoDShape(double x, string n)
+        {
+            Width = Height = x;
+            name = n;
+        }
+
+        public TwoDShape(TwoDShape ob)
+        {
+            Width = ob.Width;
+            Height = ob.Height;
+            name = ob.name;
+        }
+
+        public double Width
+        {
+            get{ return pri_width; }
+            set{ pri_width = value < 0 ? -value : value; }
+        }
+
+        public double Height
+        {
+            get { return pri_height; }
+            set { pri_height = value < 0 ? -value : value; }
+        }
+
+        public string name { get; set; }
+
+        public void ShowDim()
+        {
+            Console.WriteLine("Width and Height equals = " + Width + "and" + Height);
+        }
+
+        public virtual double Area()
+        {
+            Console.WriteLine("Method Area() need to be override");
+            return 0.0;
+        }
+        
+    }
+
+    class Triangle : TwoDShape
+    {
+        string Style;
+
+        public Triangle()
+        {
+            Style = "null";
+        }
+
+        public Triangle(string s, double w, double h) : base(w, h, "triangle")
+        {
+            Style = s;
+        }
+
+        public Triangle(double x) : base(x, "triangle")
+        {
+            Style = "ravnobedrennii";
+        }
+
+        public Triangle(Triangle ob) : base(ob)
+        {
+            Style = ob.Style;
+        }
+
+        public override double Area()
+        {
+            return Width * Height / 2;
+        }
+
+        public void ShowStyle()
+        {
+            Console.WriteLine("Triangle" + Style);
+        }
+    }
+
+    class Rectangle : TwoDShape
+    {
+        public Rectangle(double w, double h) : base(w, h, "pryamougolnik")
+
+        { 
+            
+        }
+
+        public Rectangle(double x) : base(x, "pryamougolnik") { }
+
+        public Rectangle(Rectangle ob) : base(ob) { }
+
+        public bool IsSquare()
+        {
+            if (Width == Height) return true;
             return false;
         }
 
+        public override double Area()
+        {
+            return Width * Height;
+        }
     }
 
-    class RangeArrayDemo {
+    class DynShapes {
         static void Main()
         {
-            RangeArray ra = new RangeArray(-5, 5);
-            RangeArray ra2 = new RangeArray(1, 10);
-            RangeArray ra3 = new RangeArray(-20, -12);
+            TwoDShape[] shapes = new TwoDShape[5];
 
-            Console.WriteLine("Leingh of array ra: " + ra.Length);
-            for (int i = -5; i <= 5; i++)
-            {
-                ra[i] = i;
-            }
-            Console.WriteLine("ra include the following: ");
-            for (int i = -5; i <= 5; i++)
-            {
-                Console.WriteLine(ra[i] + " ");
-                Console.WriteLine("\n");
-            }
-
-            Console.WriteLine("Length of array ra2 is: " + ra2.Length);
-            for (int i = 1; i <= 10; i++)
-            {
-                ra2[i] = i;
-            }
-
-            Console.WriteLine("ra2 include the following: ");
-            for (int i = 1; i <= 10; i++)
-                Console.WriteLine(ra2[i] + " "); 
 
         }
     }
+
+    //class A {
+    //    public int i = 0;
+
+    //    public void Show()
+    //    {
+    //        Console.WriteLine("Member i into base class " + i);
+    //    }
+    //}
+
+    //class B : A {
+    //    new int i;
+
+    //    public B(int a, int b)
+    //    {
+    //        base.i = a;
+    //        i = b;
+    //    }
+
+    //    new public void Show()
+    //    {
+    //        base.Show();
+
+    //        Console.WriteLine("Member i into child class: " + i);
+    //    }
+    //}
+
+    //class UncoverName {
+    //    static void Main()
+    //    {
+    //        B ob = new B(1, 2);
+    //        ob.Show();
+    //    }
+    //}
+    //class TwoDShape {
+    //    double pri_width;
+    //    double pri_height;
+
+    //    public TwoDShape()
+    //    {
+    //        Width = Height = 0.0;
+    //    }
+
+    //    public TwoDShape(double w, double h)
+    //    {
+    //        Width = w;
+    //        Height = h;
+    //    }
+
+    //    public TwoDShape(double x)
+    //    {
+    //        Width = Height = x;
+    //    }
+
+    //    public double Width 
+    //    {
+    //        get { return pri_width; }
+    //        set { pri_width = value < 0 ? -value : value; }
+    //    }
+
+    //    public double Height 
+    //    {
+    //        get { return pri_height; }
+    //        set { pri_height = value < 0 ? -value : value; }
+    //    }
+
+    //    public void ShowDim() {
+    //        Console.WriteLine("Width and Height equals " + Width + " and " + Height);
+    //    }
+    //}
+
+    //class Triangle : TwoDShape {
+    //    string Style;
+
+    //    public Triangle()
+    //    {
+    //        Style = null;
+    //    }
+
+    //    public Triangle(string s, double w, double h) : base(w, h)
+    //    {
+    //        Style = s;
+    //    }
+
+    //    public Triangle(double x) : base(x) {
+    //        Style = "ravnobedrennii";
+    //    }
+
+
+
+    //    public double Area()
+    //    {
+    //        return Width * Height / 2;
+    //    }
+
+    //    public void ShowStyle() {
+    //        Console.WriteLine("Triangle " + Style);
+    //    }
+    //}
+
+    //class Shapes4 { 
+    //static void Main()
+    //    {
+    //        Triangle t1 = new Triangle();
+    //        Triangle t2 = new Triangle("pryamougolnii", 8.0, 12.0);
+    //        Triangle t3 = new Triangle(4.0);
+
+    //        t1 = t2;
+
+    //        Console.WriteLine("Info about object t1: ");
+    //        t1.ShowStyle();
+    //        t1.ShowDim();
+    //        Console.WriteLine("Area equals " + t1.Area());
+
+    //        Console.WriteLine();
+
+    //        Console.WriteLine("Info about object t2: ");
+    //        t2.ShowStyle();
+    //        t2.ShowDim();
+    //        Console.WriteLine("Area equals " + t2.Area());
+
+    //        Console.WriteLine("Info about object t3: ");
+    //        t3.ShowStyle();
+    //        t3.ShowDim();
+    //        Console.WriteLine("Area equals " + t3.Area());
+    //    }
+    //}
+    //class RangeArray {
+    //    int[] a;
+    //    int lowerBound;
+    //    int upperBound;
+
+    //    public int Length { get; private set; }
+    //    public bool Error { get; private set; }
+
+    //    public RangeArray(int low, int high)
+    //    {
+    //        high++;
+    //        if (high <= low)
+    //        {
+    //            Console.WriteLine("Wrong indexes");
+    //            high = 1;
+    //            low = 0;
+    //        }
+    //        a = new int[high - low];
+    //        Length = high - low;
+
+    //        lowerBound = low;
+    //        upperBound = --high;
+    //    }
+
+    //        public int this[int index]
+    //    {
+    //        get
+    //        {
+    //            if (ok(index))
+    //            {
+    //                Error = false;
+    //                return a[index - lowerBound];
+
+    //            }
+    //            else
+    //            {
+    //                Error = true;
+    //                return 0;
+    //            }
+    //        }
+    //        set
+    //        {
+    //            if (ok(index))
+    //            {
+    //                a[index - lowerBound] = value;
+    //                Error = false;
+    //            }
+    //            else
+    //            {
+    //                Error = true;
+    //            }
+
+    //        }
+    //    }
+    //    private bool ok(int index)
+    //    {
+    //        if (index >= lowerBound & index <= upperBound) return true;
+    //        return false;
+    //    }
+
+    //}
+
+    //class RangeArrayDemo {
+    //    static void Main()
+    //    {
+    //        RangeArray ra = new RangeArray(-5, 5);
+    //        RangeArray ra2 = new RangeArray(1, 10);
+    //        RangeArray ra3 = new RangeArray(-20, -12);
+
+    //        Console.WriteLine("Leingh of array ra: " + ra.Length);
+    //        for (int i = -5; i <= 5; i++)
+    //        {
+    //            ra[i] = i;
+    //        }
+    //        Console.WriteLine("ra include the following: ");
+    //        for (int i = -5; i <= 5; i++)
+    //        {
+    //            Console.WriteLine(ra[i] + " ");
+    //            Console.WriteLine("\n");
+    //        }
+
+    //        Console.WriteLine("Length of array ra2 is: " + ra2.Length);
+    //        for (int i = 1; i <= 10; i++)
+    //        {
+    //            ra2[i] = i;
+    //        }
+
+    //        Console.WriteLine("ra2 include the following: ");
+    //        for (int i = 1; i <= 10; i++)
+    //            Console.WriteLine(ra2[i] + " ");
+    //        Console.WriteLine("\n");
+
+    //        Console.WriteLine("Length of array ra3: " + ra3.Length);
+    //        for (int i = -20; i <= -12; i++)
+    //            ra3[i] = i;
+
+    //        Console.Write("ra3 include: ");
+
+    //        for (int i = -20; i <= -12; i++)
+    //            Console.Write(ra3[i] + " ");
+
+    //        Console.WriteLine("\n");
+
+    //    }
+    //}
     //class FailSoftArray {
     //    int[] a;
     //    int len;
