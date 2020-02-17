@@ -3,130 +3,186 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class TwoDShape {
-        double pri_width;
-        double pri_height;
 
-        public TwoDShape()
-        {
-            Width = Height = 0.0;
-            name = "null";
-        }
-
-        public TwoDShape(double w, double h, string n)
-        {
-            Width = w;
-            Height = h;
-            name = n;
-        }
-
-        public TwoDShape(double x, string n)
-        {
-            Width = Height = x;
-            name = n;
-        }
-
-        public TwoDShape(TwoDShape ob)
-        {
-            Width = ob.Width;
-            Height = ob.Height;
-            name = ob.name;
-        }
-
-        public double Width
-        {
-            get{ return pri_width; }
-            set{ pri_width = value < 0 ? -value : value; }
-        }
-
-        public double Height
-        {
-            get { return pri_height; }
-            set { pri_height = value < 0 ? -value : value; }
-        }
-
-        public string name { get; set; }
-
-        public void ShowDim()
-        {
-            Console.WriteLine("Width and Height equals = " + Width + "and" + Height);
-        }
-
-        public virtual double Area()
-        {
-            Console.WriteLine("Method Area() need to be override");
-            return 0.0;
-        }
-        
-    }
-
-    class Triangle : TwoDShape
-    {
-        string Style;
-
-        public Triangle()
-        {
-            Style = "null";
-        }
-
-        public Triangle(string s, double w, double h) : base(w, h, "triangle")
-        {
-            Style = s;
-        }
-
-        public Triangle(double x) : base(x, "triangle")
-        {
-            Style = "ravnobedrennii";
-        }
-
-        public Triangle(Triangle ob) : base(ob)
-        {
-            Style = ob.Style;
-        }
-
-        public override double Area()
-        {
-            return Width * Height / 2;
-        }
-
-        public void ShowStyle()
-        {
-            Console.WriteLine("Triangle" + Style);
-        }
-    }
-
-    class Rectangle : TwoDShape
-    {
-        public Rectangle(double w, double h) : base(w, h, "pryamougolnik")
-
-        { 
-            
-        }
-
-        public Rectangle(double x) : base(x, "pryamougolnik") { }
-
-        public Rectangle(Rectangle ob) : base(ob) { }
-
-        public bool IsSquare()
-        {
-            if (Width == Height) return true;
-            return false;
-        }
-
-        public override double Area()
-        {
-            return Width * Height;
-        }
-    }
-
-    class DynShapes {
+    class BoxingDemo {
         static void Main()
         {
-            TwoDShape[] shapes = new TwoDShape[5];
+            int x;
+            object obj;
+            x = 10;
+            obj = x;
 
-
+            int y = (int)obj;
+            Console.WriteLine(y);
         }
     }
+    //class MyClass {
+    //    static int count = 0;
+    //    int id;
+
+    //    public MyClass()
+    //    {
+    //        id = count;
+    //        count++;
+    //    }
+
+    //    public override string ToString()
+    //    {
+    //        return "Object #" + id + "type MyClass";
+    //    }
+    //}
+
+    //class Test {
+    //    static void Main()
+    //    {
+    //        MyClass ob1 = new MyClass();
+    //        MyClass ob2 = new MyClass();
+    //        MyClass ob3 = new MyClass();
+
+    //        Console.WriteLine(ob1);
+    //        Console.WriteLine(ob2);
+    //        Console.WriteLine(ob3);
+
+    //    }
+    //}
+    //class TwoDShape {
+    //    double pri_width;
+    //    double pri_height;
+
+    //    public TwoDShape()
+    //    {
+    //        Width = Height = 0.0;
+    //        name = "null";
+    //    }
+
+    //    public TwoDShape(double w, double h, string n)
+    //    {
+    //        Width = w;
+    //        Height = h;
+    //        name = n;
+    //    }
+
+    //    public TwoDShape(double x, string n)
+    //    {
+    //        Width = Height = x;
+    //        name = n;
+    //    }
+
+    //    public TwoDShape(TwoDShape ob)
+    //    {
+    //        Width = ob.Width;
+    //        Height = ob.Height;
+    //        name = ob.name;
+    //    }
+
+    //    public double Width
+    //    {
+    //        get{ return pri_width; }
+    //        set{ pri_width = value < 0 ? -value : value; }
+    //    }
+
+    //    public double Height
+    //    {
+    //        get { return pri_height; }
+    //        set { pri_height = value < 0 ? -value : value; }
+    //    }
+
+    //    public string name { get; set; }
+
+    //    public void ShowDim()
+    //    {
+    //        Console.WriteLine("Width and Height equals = " + Width + "and" + Height);
+    //    }
+
+    //    public virtual double Area()
+    //    {
+    //        Console.WriteLine("Method Area() need to be override");
+    //        return 0.0;
+    //    }
+        
+    //}
+
+    //class Triangle : TwoDShape
+    //{
+    //    string Style;
+
+    //    public Triangle()
+    //    {
+    //        Style = "null";
+    //    }
+
+    //    public Triangle(string s, double w, double h) : base(w, h, "triangle")
+    //    {
+    //        Style = s;
+    //    }
+
+    //    public Triangle(double x) : base(x, "triangle")
+    //    {
+    //        Style = "ravnobedrennii";
+    //    }
+
+    //    public Triangle(Triangle ob) : base(ob)
+    //    {
+    //        Style = ob.Style;
+    //    }
+
+    //    public override double Area()
+    //    {
+    //        return Width * Height / 2;
+    //    }
+
+    //    public void ShowStyle()
+    //    {
+    //        Console.WriteLine("Triangle" + Style);
+    //    }
+    //}
+
+    //class Rectangle : TwoDShape
+    //{
+    //    public Rectangle(double w, double h) : base(w, h, "pryamougolnik")
+
+    //    { 
+            
+    //    }
+
+    //    public Rectangle(double x) : base(x, "pryamougolnik") { }
+
+    //    public Rectangle(Rectangle ob) : base(ob) { }
+
+    //    public bool IsSquare()
+    //    {
+    //        if (Width == Height) return true;
+    //        return false;
+    //    }
+
+    //    public override double Area()
+    //    {
+    //        return Width * Height;
+    //    }
+    //}
+
+    //class DynShapes {
+    //    static void Main()
+    //    {
+    //        TwoDShape[] shapes = new TwoDShape[5];
+
+    //        shapes[0] = new Triangle("", 8.0, 12.0);
+    //        shapes[1] = new Rectangle(10);
+    //        shapes[2] = new Rectangle(10, 4);
+    //        shapes[3] = new Triangle(7.0);
+    //        shapes[4] = new TwoDShape(10, 20, "main form");
+
+    //        for (int i = 0; i < shapes.Length; i++)
+    //        {
+    //            Console.WriteLine("Object -" + shapes[i].name);
+    //            Console.WriteLine("Area is equal:" + shapes[i].Area());
+    //            Console.WriteLine();
+    //        }
+
+
+
+    //    }
+    //}
 
     //class A {
     //    public int i = 0;
