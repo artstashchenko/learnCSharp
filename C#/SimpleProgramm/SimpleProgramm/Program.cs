@@ -4,18 +4,82 @@ using System.Globalization;
 namespace SimpleProgramm
 {
 
-    class BoxingDemo {
+    public interface ISeries {
+        int GetNext();
+        void Reset();
+        void SetStart(int x);
+    }
+
+    class ByTwos : ISeries {
+        int start;
+        int val;
+
+        public ByTwos()
+        {
+            start = 0;
+            val = 0;
+        }
+
+        public int GetNext()
+        {
+            val += 2;
+            return val;
+        }
+
+        public void Reset()
+        {
+            val = start;
+        }
+
+        public void SetStart(int x)
+        {
+            start = x;
+            val = start;
+        }
+
+    }
+
+    class SeriesDemoP
+    {
+
         static void Main()
         {
-            int x;
-            object obj;
-            x = 10;
-            obj = x;
+            ByTwos ob = new ByTwos();
 
-            int y = (int)obj;
-            Console.WriteLine(y);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Next digit is equal:" + ob.GetNext());
+            }
+
+            Console.WriteLine("\nReset");
+            ob.Reset();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Next digit equals " + ob.GetNext());
+            }
+
+            Console.WriteLine("\nBegin from digit 100");
+            ob.SetStart(100);
+            for (int i = 0; i < 5; i++)
+                
+            {
+                Console.WriteLine("Next digit is equal " + ob.GetNext());
+            }
         }
     }
+    //class BoxingDemo {
+    //    static void Main()
+    //    {
+    //        int x;
+    //        object obj;
+    //        x = 10;
+    //        obj = x;
+
+    //        int y = (int)obj;
+    //        Console.WriteLine(y);
+    ////    }
+    //}
     //class MyClass {
     //    static int count = 0;
     //    int id;
