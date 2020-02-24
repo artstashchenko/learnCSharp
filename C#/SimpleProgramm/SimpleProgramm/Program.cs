@@ -3,71 +3,122 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-
-    public interface ISeries {
-        int GetNext();
-        void Reset();
-        void SetStart(int x);
+    public interface IMyIF_A {
+        int Meth(int x);
     }
 
-    class ByTwos : ISeries {
-        int start;
-        int val;
-
-        public ByTwos()
-        {
-            start = 0;
-            val = 0;
-        }
-
-        public int GetNext()
-        {
-            val += 2;
-            return val;
-        }
-
-        public void Reset()
-        {
-            val = start;
-        }
-
-        public void SetStart(int x)
-        {
-            start = x;
-            val = start;
-        }
-
+    public interface IMyIF_B {
+        int Menth(int x);
     }
 
-    class SeriesDemoP
+    class MyClass : IMyIF_A, IMyIF_B
     {
+        int IMyIF_A.Meth(int x) {
+            return x + x;
+        }
 
+        int IMyIF_B.Menth(int x) {
+            return x * x;
+        }
+
+        public int MenthA(int x)
+        {
+            IMyIF_A a_ob;
+            a_ob = this;
+            return a_ob.Meth(x);
+        }
+
+        public int MenthB(int x)
+        {
+            IMyIF_B b_ob;
+            b_ob = this;
+            return b_ob.Menth(x);
+        }
+    }
+
+    class FQIFNames {
         static void Main()
         {
-            ByTwos ob = new ByTwos();
+            MyClass ob = new MyClass();
 
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine("Next digit is equal:" + ob.GetNext());
-            }
-
-            Console.WriteLine("\nReset");
-            ob.Reset();
-
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine("Next digit equals " + ob.GetNext());
-            }
-
-            Console.WriteLine("\nBegin from digit 100");
-            ob.SetStart(100);
-            for (int i = 0; i < 5; i++)
-                
-            {
-                Console.WriteLine("Next digit is equal " + ob.GetNext());
-            }
+            Console.WriteLine(ob.MenthA(3));
+            Console.WriteLine(ob.MenthB(3));
         }
     }
+
+    //public interface ISeries {
+    //    int GetNext();
+    //    void Reset();
+    //    void SetStart(int x);
+    //}
+
+    //class ByTwos : ISeries {
+    //    int start;
+    //    int val;
+    //    int prev;
+
+    //    public ByTwos()
+    //    {
+    //        start = 0;
+    //        val = 0;
+    //        prev = -2;
+    //    }
+
+    //    public int GetNext()
+    //    {
+    //        prev = val;
+    //        val += 2;
+    //        return val;
+    //    }
+
+    //    public void Reset()
+    //    {
+    //        val = start;
+    //        prev = start - 2;
+    //    }
+
+    //    public void SetStart(int x)
+    //    {
+    //        start = x;
+    //        val = start;
+    //        prev = val - 2;
+    //    }
+
+    //    public int GetPrevious()
+    //    {
+    //        return prev;
+    //    }
+    //}
+
+    //class SeriesDemoP
+    //{
+
+    //    static void Main()
+    //    {
+    //        ByTwos ob = new ByTwos();
+
+    //        for (int i = 0; i < 5; i++)
+    //        {
+    //            Console.WriteLine("Next digit is equal:" + ob.GetNext());
+    //        }
+
+    //        Console.WriteLine("\nReset");
+    //        ob.Reset();
+
+    //        for (int i = 0; i < 5; i++)
+    //        {
+    //            Console.WriteLine("Next digit equals " + ob.GetNext());
+    //        }
+
+    //        Console.WriteLine("\nBegin from digit 100");
+    //        ob.SetStart(100);
+    //        for (int i = 0; i < 5; i++)
+                
+    //        {
+    //            Console.WriteLine("Next digit is equal " + ob.GetNext());
+    //        }
+    //    }
+    //}
     //class BoxingDemo {
     //    static void Main()
     //    {
