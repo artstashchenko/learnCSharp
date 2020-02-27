@@ -3,48 +3,132 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    public interface IMyIF_A {
-        int Meth(int x);
-    }
+    class EnumDemo {
+        enum Apple { J, G, R, W, C, M};
 
-    public interface IMyIF_B {
-        int Menth(int x);
-    }
-
-    class MyClass : IMyIF_A, IMyIF_B
-    {
-        int IMyIF_A.Meth(int x) {
-            return x + x;
-        }
-
-        int IMyIF_B.Menth(int x) {
-            return x * x;
-        }
-
-        public int MenthA(int x)
-        {
-            IMyIF_A a_ob;
-            a_ob = this;
-            return a_ob.Meth(x);
-        }
-
-        public int MenthB(int x)
-        {
-            IMyIF_B b_ob;
-            b_ob = this;
-            return b_ob.Menth(x);
-        }
-    }
-
-    class FQIFNames {
         static void Main()
         {
-            MyClass ob = new MyClass();
+            string[] color = 
+            {
+                "red", "yellow", "red", "red", "red", "red-green"
+            };
 
-            Console.WriteLine(ob.MenthA(3));
-            Console.WriteLine(ob.MenthB(3));
+            Apple i;
+            for (i = Apple.J; i <= Apple.M; i++)
+            {
+                Console.WriteLine(i + "have a value" + (int)i);
+            }
+
+            Console.WriteLine();
+
+            for (i = Apple.J; i <=Apple.M; i++)
+            {
+                Console.WriteLine("Color of sort" + i + " - " + color[(int)i]);
+            }
         }
     }
+    //struct PacketHeaderP
+    //{
+    //    public uint PackNum;
+    //    public ushort PackLen;
+    //}
+
+    //class Transaction {
+    //    static uint transacNum = 0;
+    //    PacketHeaderP ph;
+    //    string accountNum;
+    //    double amount;
+
+    //    public Transaction(string acc, double val)
+    //    {
+    //        ph.PackNum = transacNum++;
+    //        ph.PackLen = 512;
+
+    //        accountNum = acc;
+    //        amount = val;
+    //    }
+
+    //    public void sendTransaction() {
+    //        Console.WriteLine("Package #: " + ph.PackNum + ", Leingth: " + ph.PackLen + ", \n Count #: " + accountNum + ", Summ: {0:C} \n", amount);
+    //    }
+
+    //    class PacketDemo
+    //    {
+    //        static void Main()
+    //        {
+    //            Transaction t = new Transaction("31243", -100.12);
+    //            Transaction t2 = new Transaction("AB4655", 345.25);
+    //            Transaction t3 = new Transaction("8475-09", 9800.00);
+
+    //            t.sendTransaction();
+    //            t2.sendTransaction();
+    //            t3.sendTransaction();
+    //        }
+    //    }
+    //}
+    //struct MyStruct {
+    //    public int x;
+    //}
+
+    //class StructAssignment {
+    //    static void Main()
+    //    {
+    //        MyStruct a;
+    //        MyStruct b;
+
+    //        a.x = 10;
+    //        b.x = 20;
+
+    //        Console.WriteLine("a.x {0}, b.x {1}", a.x, b.x);
+
+    //        a = b;
+    //        b.x = 30;
+
+    //        Console.WriteLine("a.x {0}, b.x {1}", a.x, b.x);
+    //    }
+    //}
+    //public interface IMyIF_A {
+    //    int Meth(int x);
+    //}
+
+    //public interface IMyIF_B {
+    //    int Menth(int x);
+    //}
+
+    //class MyClass : IMyIF_A, IMyIF_B
+    //{
+    //    int IMyIF_A.Meth(int x) {
+    //        return x + x;
+    //    }
+
+    //    int IMyIF_B.Menth(int x) {
+    //        return x * x;
+    //    }
+
+    //    public int MenthA(int x)
+    //    {
+    //        IMyIF_A a_ob;
+    //        a_ob = this;
+    //        return a_ob.Meth(x);
+    //    }
+
+    //    public int MenthB(int x)
+    //    {
+    //        IMyIF_B b_ob;
+    //        b_ob = this;
+    //        return b_ob.Menth(x);
+    //    }
+    //}
+
+    //class FQIFNames {
+    //    static void Main()
+    //    {
+    //        MyClass ob = new MyClass();
+
+    //        Console.WriteLine(ob.MenthA(3));
+    //        Console.WriteLine(ob.MenthB(3));
+    //    }
+    //}
 
     //public interface ISeries {
     //    int GetNext();
