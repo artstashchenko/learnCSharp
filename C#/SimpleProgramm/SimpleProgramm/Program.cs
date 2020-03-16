@@ -3,30 +3,98 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class EnumDemo {
-        enum Apple { J, G, R, W, C, M};
-
+    class ExcDemo3 {
         static void Main()
         {
-            string[] color = 
-            {
-                "red", "yellow", "red", "red", "red", "red-green"
-            };
+            int[] numer = { 4, 8, 16, 32, 64, 128 };
+            int[] denom = { 2, 0, 4, 4, 0, 8 };
 
-            Apple i;
-            for (i = Apple.J; i <= Apple.M; i++)
+            for (int i = 0; i < numer.Length; i++)
             {
-                Console.WriteLine(i + "have a value" + (int)i);
-            }
-
-            Console.WriteLine();
-
-            for (i = Apple.J; i <=Apple.M; i++)
-            {
-                Console.WriteLine("Color of sort" + i + " - " + color[(int)i]);
+                try
+                {
+                    Console.WriteLine(numer[i] + " / " + denom[i] + "equals" + numer[i] / denom[i]);
+                }
+                catch (DivideByZeroException)
+                {
+                    Console.WriteLine("Devide for zero is restricted");
+                }
             }
         }
     }
+    //class ExcTest {
+    //    public static void GenException()
+    //    {
+    //        int[] nums = new int[4];
+    //        Console.WriteLine("Before get exception");
+
+    //        for (int i = 0; i < 10; i++)
+    //        {
+    //            nums[i] = i;
+    //            Console.WriteLine("nums [{0}] : {1}", i, nums[i]);
+    //        }
+    //        Console.WriteLine("Does not relate previous");
+    //    }
+    //}
+
+    //class ExcDemo2 {
+    //    static void Main()
+    //    {
+    //        try
+    //        {
+    //            ExcTest.GenException();
+    //        }
+    //        catch (IndexOutOfRangeException) {
+    //            Console.WriteLine("Index was out of range the array");
+    //        }
+    //        Console.WriteLine("After block");
+    //    }
+    //}
+    //class ExcDemol {
+    //    static void Main()
+    //    {
+    //        int[] nums = new int[4];
+    //        try {
+    //            Console.WriteLine("Befro exception generating");
+
+    //            for (int i = 0; i < 10; i++)
+    //            {
+    //                nums[i] = i;
+    //                Console.WriteLine("nums[{0}]: {1}", i, nums[i]);
+    //            }
+    //            Console.WriteLine("There are nothing to show");
+    //        }
+    //        catch (IndexOutOfRangeException)
+    //        {
+    //            Console.WriteLine("Index out of range the array");
+    //        }
+    //        Console.WriteLine("After block get exceptions");
+    //    }
+    //}
+    //class EnumDemo {
+    //    enum Apple { J, G, R, W, C, M};
+
+    //    static void Main()
+    //    {
+    //        string[] color = 
+    //        {
+    //            "red", "yellow", "red", "red", "red", "red-green"
+    //        };
+
+    //        Apple i;
+    //        for (i = Apple.J; i <= Apple.M; i++)
+    //        {
+    //            Console.WriteLine(i + "have a value" + (int)i);
+    //        }
+
+    //        Console.WriteLine();
+
+    //        for (i = Apple.J; i <=Apple.M; i++)
+    //        {
+    //            Console.WriteLine("Color of sort" + i + " - " + color[(int)i]);
+    //        }
+    //    }
+    //}
     //struct PacketHeaderP
     //{
     //    public uint PackNum;
