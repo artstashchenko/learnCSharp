@@ -3,25 +3,70 @@ using System.Globalization;
 
 namespace SimpleProgramm
 {
-    class ExcDemo3 {
+
+    class ExceptA : Exception {
+        public ExceptA(string str) : base(str) { }
+
+        public override string ToString()
+        {
+            return Message;
+        }
+    }
+
+    class ExceptB : ExceptA
+    {
+        public ExceptB(string str) : base(str) { }
+        public override string ToString()
+        {
+            return Message;
+        }
+    }
+
+    class OrderMatters {
         static void Main()
         {
-            int[] numer = { 4, 8, 16, 32, 64, 128 };
-            int[] denom = { 2, 0, 4, 4, 0, 8 };
-
-            for (int i = 0; i < numer.Length; i++)
+            for (int x = 0; x < 3; x++)
             {
                 try
                 {
-                    Console.WriteLine(numer[i] + " / " + denom[i] + "equals" + numer[i] / denom[i]);
+                    if (x == 0) throw new ExceptA("Exception get type ExceptA");
+                    else if (x == 1) throw new ExceptB("Excepton get type ExceptB");
+                    else throw new Exception();
                 }
-                catch (DivideByZeroException)
+                catch (ExceptB exc)
                 {
-                    Console.WriteLine("Devide for zero is restricted");
+                    Console.WriteLine(exc);
+                }
+                catch (ExceptA exc)
+                {
+                    Console.WriteLine(exc);
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine(exc);
                 }
             }
         }
     }
+    //class ExcDemo3 {
+    //    static void Main()
+    //    {
+    //        int[] numer = { 4, 8, 16, 32, 64, 128 };
+    //        int[] denom = { 2, 0, 4, 4, 0, 8 };
+
+    //        for (int i = 0; i < numer.Length; i++)
+    //        {
+    //            try
+    //            {
+    //                Console.WriteLine(numer[i] + " / " + denom[i] + "equals" + numer[i] / denom[i]);
+    //            }
+    //            catch (DivideByZeroException)
+    //            {
+    //                Console.WriteLine("Devide for zero is restricted");
+    //            }
+    //        }
+    //    }
+    //}
     //class ExcTest {
     //    public static void GenException()
     //    {
