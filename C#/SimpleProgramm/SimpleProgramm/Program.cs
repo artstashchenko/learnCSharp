@@ -1,53 +1,123 @@
 ﻿using System;
 using System.Globalization;
+using System.IO;
 
 namespace SimpleProgramm
 {
-
-    class ExceptA : Exception {
-        public ExceptA(string str) : base(str) { }
-
-        public override string ToString()
+    class ShowFile {
+        static void Main(string [] args)
         {
-            return Message;
-        }
-    }
+            int i;
+            FileStream fin = null;
 
-    class ExceptB : ExceptA
-    {
-        public ExceptB(string str) : base(str) { }
-        public override string ToString()
-        {
-            return Message;
-        }
-    }
-
-    class OrderMatters {
-        static void Main()
-        {
-            for (int x = 0; x < 3; x++)
+            if (args.Length != 1)
             {
-                try
+                Console.WriteLine("Using: Show FIle");
+                return;
+            }
+
+            try
+            {
+                fin = new FileStream(args[0], FileMode.Open);
+
+                do
                 {
-                    if (x == 0) throw new ExceptA("Exception get type ExceptA");
-                    else if (x == 1) throw new ExceptB("Excepton get type ExceptB");
-                    else throw new Exception();
-                }
-                catch (ExceptB exc)
-                {
-                    Console.WriteLine(exc);
-                }
-                catch (ExceptA exc)
-                {
-                    Console.WriteLine(exc);
-                }
-                catch (Exception exc)
-                {
-                    Console.WriteLine(exc);
-                }
+                    i = fin.ReadByte();
+                    if (i != -1) Console.Write((char)i);
+                } while (i != -1);
+            }
+            catch (IOException exc)
+            {
+                Console.WriteLine("Exception input-output" + exc.Message);
+            }
+            finally {
+                if (fin != null)
+                    fin.Close();
             }
         }
     }
+    //class ErrOut
+    //{
+    //    static void Main()
+    //    {
+    //        int a = 10, b = 0;
+    //        int result;
+
+    //        Console.Out.WriteLine("Devide on 0 will return exception");
+    //        try
+    //        {
+    //            result = a / b;
+    //        }
+    //        catch (DivideByZeroException exc)
+    //        {
+    //            Console.Error.WriteLine(exc.Message);
+    //        }
+    //    }
+    //}
+    //class ReadKeys{
+    //    static void Main()
+    //    {
+    //        ConsoleKeyInfo keypress;
+
+    //        Console.WriteLine("After ending of entering symbols, press Q");
+
+    //        do {
+    //            keypress = Console.ReadKey();
+    //            Console.WriteLine("You had enter key" + keypress.KeyChar);
+
+    //            if ((ConsoleModifiers.Alt & keypress.Modifiers) !=0)
+    //                Console.WriteLine("Key ALT has been pressed");
+    //            if ((ConsoleModifiers.Control & keypress.Modifiers) !=0)
+    //                Console.WriteLine("Key Control has been pressed");
+
+    //        } while (keypress.KeyChar != 'Q');
+    //    }
+    //}
+
+    //class ExceptA : Exception {
+    //    public ExceptA(string str) : base(str) { }
+
+    //    public override string ToString()
+    //    {
+    //        return Message;
+    //    }
+    //}
+
+    //class ExceptB : ExceptA
+    //{
+    //    public ExceptB(string str) : base(str) { }
+    //    public override string ToString()
+    //    {
+    //        return Message;
+    //    }
+    //}
+
+    //class OrderMatters {
+    //    static void Main()
+    //    {
+    //        for (int x = 0; x < 3; x++)
+    //        {
+    //            try
+    //            {
+    //                if (x == 0) throw new ExceptA("Exception get type ExceptA");
+    //                else if (x == 1) throw new ExceptB("Excepton get type ExceptB");
+    //                else throw new Exception();
+    //            }
+    //            catch (ExceptB exc)
+    //            {
+    //                Console.WriteLine(exc);
+    //            }
+    //            catch (ExceptA exc)
+    //            {
+    //                Console.WriteLine(exc);
+    //            }
+    //            catch (Exception exc)
+    //            {
+    //                Console.WriteLine(exc);
+    //            }
+    //        }
+    //    }
+    //}
     //class ExcDemo3 {
     //    static void Main()
     //    {
