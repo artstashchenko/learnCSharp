@@ -4,38 +4,159 @@ using System.IO;
 
 namespace SimpleProgramm
 {
-    class ShowFile {
-        static void Main(string [] args)
+    class ExistDemo {
+        static void Main()
         {
-            int i;
-            FileStream fin = null;
-
-            if (args.Length != 1)
-            {
-                Console.WriteLine("Using: Show FIle");
-                return;
-            }
-
-            try
-            {
-                fin = new FileStream(args[0], FileMode.Open);
-
-                do
-                {
-                    i = fin.ReadByte();
-                    if (i != -1) Console.Write((char)i);
-                } while (i != -1);
-            }
-            catch (IOException exc)
-            {
-                Console.WriteLine("Exception input-output" + exc.Message);
-            }
-            finally {
-                if (fin != null)
-                    fin.Close();
-            }
+            if (File.Exists("test.txt"))
+                Console.WriteLine("File exist and last access was in: " + File.GetLastAccessTime("test.txt"));
+            else
+                Console.WriteLine("File does not exist");
         }
     }
+    //class RandomAccessDemo {
+    //    static void Main()
+    //    {
+    //        FileStream f = null;
+    //        char ch;
+
+    //        try
+    //        {
+    //            f = new FileStream("random.dat", FileMode.Create);
+    //            for (int i = 0; i < 26; i++)
+    //                  f.WriteByte((byte)('A' + i));
+
+    //                f.Seek(0, SeekOrigin.Begin);
+    //                ch = (char) f.ReadByte();
+    //                Console.WriteLine("First letter is: {0}", ch);
+
+    //                f.Seek(1, SeekOrigin.Begin);
+    //                ch = (char)f.ReadByte();
+    //                Console.WriteLine("Second letter is: {0}", ch);
+
+    //                f.Seek(4, SeekOrigin.Begin);
+    //                ch = (char)f.ReadByte();
+    //                Console.WriteLine("Five letter is: {0}", ch);
+
+    //                Console.WriteLine();
+
+    //                Console.WriteLine("Letters of alphabet one by one");
+
+    //                for (int j = 0; j < 26; j += 2)
+    //                {
+    //                    f.Seek(j, SeekOrigin.Begin);
+    //                    ch = (char)f.ReadByte();
+    //                    Console.Write(ch + " ");
+
+    //                }
+    //        }
+    //        catch (IOException exc)
+    //        {
+    //            Console.WriteLine("Error input/output" + exc.Message);
+    //        }
+    //        finally { if (f != null) f.Close(); } Console.WriteLine();
+    //    }
+      
+    //}
+    //class KtoD
+    //{
+    //    public static void Main()
+    //    {
+    //        string str;
+    //        StreamWriter fstr_out = null;
+
+    //        try
+    //        {
+    //            fstr_out = new StreamWriter("test.txt");
+    //            Console.WriteLine("Enter you txt, when finish type stop!");
+
+    //            do
+    //            {
+    //                Console.Write(":");
+    //                str = Console.ReadLine();
+
+    //                if (str != "stop")
+    //                {
+    //                    str = str + "\r\n";
+    //                    fstr_out.Write(str);
+    //                }
+    //            } while (str != "stop");
+    //        }
+    //        catch (IOException exc)
+    //        {
+    //            Console.WriteLine("Error output:\n" + exc.Message);
+    //        }
+    //        finally
+    //        {
+    //            if (fstr_out != null)
+    //                fstr_out.Close();
+    //        }
+
+    //    }
+    //}
+    //    class DtoS
+    //    {
+    //        static void Main()
+    //        {
+    //            FileStream fin;
+    //            string s;
+
+    //            try
+    //            {
+    //                fin = new FileStream("test.txt", FileMode.Open);
+    //            }
+    //            catch (IOException exc)
+    //            {
+    //                Console.WriteLine("Error input/output:\n" + exc.Message);
+    //                return;
+    //            }
+
+    //            StreamReader fstr_in = new StreamReader(fin);
+
+    //            try
+    //            {
+    //                while ((s = fstr_in.ReadLine()) != null)
+    //                    Console.WriteLine(s);
+    //            }
+    //            catch (IOException exc)
+    //            {
+    //                Console.WriteLine("Error input/output:\n" + exc.Message);
+    //            }
+    //            finally { fstr_in.Close(); }
+    //        }
+    //    }
+    //}
+    //class ShowFile {
+    //    static void Main(string [] args)
+    //    {
+    //        int i;
+    //        FileStream fin = null;
+
+    //        if (args.Length != 1)
+    //        {
+    //            Console.WriteLine("Using: Show FIle");
+    //            return;
+    //        }
+
+    //        try
+    //        {
+    //            fin = new FileStream(args[0], FileMode.Open);
+
+    //            do
+    //            {
+    //                i = fin.ReadByte();
+    //                if (i != -1) Console.Write((char)i);
+    //            } while (i != -1);
+    //        }
+    //        catch (IOException exc)
+    //        {
+    //            Console.WriteLine("Exception input-output" + exc.Message);
+    //        }
+    //        finally {
+    //            if (fin != null)
+    //                fin.Close();
+    //        }
+    //    }
+    //}
     //class ErrOut
     //{
     //    static void Main()
@@ -380,7 +501,7 @@ namespace SimpleProgramm
     //        Console.WriteLine("\nBegin from digit 100");
     //        ob.SetStart(100);
     //        for (int i = 0; i < 5; i++)
-                
+
     //        {
     //            Console.WriteLine("Next digit is equal " + ob.GetNext());
     //        }
@@ -481,7 +602,7 @@ namespace SimpleProgramm
     //        Console.WriteLine("Method Area() need to be override");
     //        return 0.0;
     //    }
-        
+
     //}
 
     //class Triangle : TwoDShape
@@ -524,7 +645,7 @@ namespace SimpleProgramm
     //    public Rectangle(double w, double h) : base(w, h, "pryamougolnik")
 
     //    { 
-            
+
     //    }
 
     //    public Rectangle(double x) : base(x, "pryamougolnik") { }
@@ -902,7 +1023,7 @@ namespace SimpleProgramm
     //        Console.Write("Coordinate dot b: ");
     //        b.Show();
     //        Console.WriteLine();
-            
+
     //        c = a + b;
     //        Console.WriteLine("a+b result");
     //        c.Show();
@@ -983,13 +1104,13 @@ namespace SimpleProgramm
     //        Console.WriteLine();
     //    }
     //}
- 
+
     //class Cipher {
     //    static void Main(string[] args)
     //    {
     //        if (args.Length < 2)
     //        { 
-            
+
     //        }
     //        Console.WriteLine("There are: ");
     //        for (int i = 0; i < args.Length; i++)
@@ -1225,36 +1346,36 @@ namespace SimpleProgramm
     //        Console.WriteLine("ob.a and ob.b before call: " + ob.a + " " + ob.b);
 
     //        ob.Change(ob);
-            
+
     //        Console.WriteLine("ob.a and ob.b after call: " + ob.a + " " + ob.b);
 
 
 
     //    }
     //}
-//    class Test {
-//        public void NoChange(int i, int j)
-//        {
-//            i = i + j;
-//            j = -j;
+    //    class Test {
+    //        public void NoChange(int i, int j)
+    //        {
+    //            i = i + j;
+    //            j = -j;
 
-//        }
-//    }
+    //        }
+    //    }
 
-//    class CallByValue
-//        {
-//    static void Main()
-//    {
-//        Test ob = new Test();
-//        int a = 15, b = 20;
+    //    class CallByValue
+    //        {
+    //    static void Main()
+    //    {
+    //        Test ob = new Test();
+    //        int a = 15, b = 20;
 
-//        Console.WriteLine("a and b before call: " + a + " " + b);
+    //        Console.WriteLine("a and b before call: " + a + " " + b);
 
-//         ob.NoChange(a,b);
+    //         ob.NoChange(a,b);
 
-//            Console.WriteLine("a and b after call: " + a + " " + b);
-//    }
-//}
+    //            Console.WriteLine("a and b after call: " + a + " " + b);
+    //    }
+    //}
     //class Test
     //{
     //    public int a, b;
@@ -1341,7 +1462,7 @@ namespace SimpleProgramm
 
     //        Console.Write("ob1: ");
     //        ob1.Show();
-            
+
     //        Console.Write("ob2: ");
     //        ob2.Show();
 
@@ -1449,7 +1570,7 @@ namespace SimpleProgramm
     //        for (i = 0; !stk1.IsFull(); i++)
     //            stk1.Push((char)('A' + i));
 
-            
+
     //        Console.WriteLine("And now pop elements from the stack stk1 and put them into stk2");
     //        while (!stk1.IsEmpty())
     //        {
@@ -1633,9 +1754,9 @@ namespace SimpleProgramm
     //        Building house = new Building(2, 2500, 4);
     //        Building office = new Building(3, 4200, 25);
 
-            
-                
-            
+
+
+
     //        Console.WriteLine("MAx people in our house is, \n" + house.MaxOccupant(300));
 
     //            Console.WriteLine();
@@ -1686,56 +1807,56 @@ namespace SimpleProgramm
     //        Console.WriteLine();
     //    }
     //}
- //   class Comma {
- //       static void Main()
- //       {
- //           int i, j;
- //           int smallest, largest;
- //           int num;
+    //   class Comma {
+    //       static void Main()
+    //       {
+    //           int i, j;
+    //           int smallest, largest;
+    //           int num;
 
- //           num = 100;
+    //           num = 100;
 
- //           smallest = largest = 1;
+    //           smallest = largest = 1;
 
- //           for (i = 2, j = num / 2; (i <= num / 2) & (j >= 2); i++, j--)
- //           {
- //               if ((smallest == 1) &((num % i) == 0))
- //               smallest = i;
- //           if ((largest == 1) & ((num % j) == 0))
- //               largest = j;
- //       }
- //           Console.WriteLine("largest multiplier: " + largest);
- //           Console.WriteLine("smallest multiplier: " + smallest);
- //       }
- //}
-   // class FindPrimes {
-   //     static void Main()
-   //     { 
-   //     int num;
-   //     int i;
-   //     int factor;
-   //     bool isprime;
+    //           for (i = 2, j = num / 2; (i <= num / 2) & (j >= 2); i++, j--)
+    //           {
+    //               if ((smallest == 1) &((num % i) == 0))
+    //               smallest = i;
+    //           if ((largest == 1) & ((num % j) == 0))
+    //               largest = j;
+    //       }
+    //           Console.WriteLine("largest multiplier: " + largest);
+    //           Console.WriteLine("smallest multiplier: " + smallest);
+    //       }
+    //}
+    // class FindPrimes {
+    //     static void Main()
+    //     { 
+    //     int num;
+    //     int i;
+    //     int factor;
+    //     bool isprime;
 
-   //     for (num = 2; num<20; num++)
-			//{
-   //         isprime = true;
-   //         factor = 0;
-			
-   //         for (i = 2; i <= num/2; i++)
-   //         {
-   //             if ((num % i) == 0) {
-   //                 isprime = false;
-   //                 factor = i;
-   //             }
+    //     for (num = 2; num<20; num++)
+    //{
+    //         isprime = true;
+    //         factor = 0;
 
-   //         }
-   //         if (isprime)
-   //             Console.WriteLine(num + " - simple digit.");
-   //         else
-   //             Console.WriteLine("biggest * digit" + num + "equals" + factor);
-   //     }
-   //   }
-   // }
+    //         for (i = 2; i <= num/2; i++)
+    //         {
+    //             if ((num % i) == 0) {
+    //                 isprime = false;
+    //                 factor = i;
+    //             }
+
+    //         }
+    //         if (isprime)
+    //             Console.WriteLine(num + " - simple digit.");
+    //         else
+    //             Console.WriteLine("biggest * digit" + num + "equals" + factor);
+    //     }
+    //   }
+    // }
     //class SwitchDemo {
     //    static void Main() {
     //        int i;
