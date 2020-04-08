@@ -4,15 +4,145 @@ using System.IO;
 
 namespace SimpleProgramm
 {
-    class ExistDemo {
+    delegate int CountIt(int end);
+
+    class AnonMethDemo3 {
         static void Main()
         {
-            if (File.Exists("test.txt"))
-                Console.WriteLine("File exist and last access was in: " + File.GetLastAccessTime("test.txt"));
-            else
-                Console.WriteLine("File does not exist");
+            int result;
+            CountIt count = delegate (int end)
+           {
+               int sum = 0;
+
+               for (int i = 0; i <= end; i++)
+               {
+                   Console.WriteLine(i);
+                   sum += i;
+               }
+               return sum;
+           };
+
+            result = count(3);
+            Console.WriteLine("Sum of three is: " + result);
+            Console.WriteLine();
+
+            result = count(5);
+            Console.WriteLine("Sum of five is: " + result);
         }
     }
+    //delegate void CountIt(int end);
+
+    //class AnonMethDemo2 {
+    //    static void Main()
+    //    {
+    //        CountIt count = delegate (int end)
+    //        {
+    //            for (int i = 0; i <= end; i++)
+    //                Console.WriteLine(i);
+    //        };
+
+    //        count(3);
+    //        Console.WriteLine ();
+    //        count(5);
+    //    }
+    //}
+    //class X { public int Val; }
+    //class Y : X { }
+
+    //delegate X ChangeIT(Y obj);
+
+    //class CoContra {
+    //    static X IncrA(X obj)
+    //    {
+    //        X temp = new X();
+    //        temp.Val = obj.Val + 1;
+    //        return temp;
+    //    }
+    //    static Y IncrB(Y obj)
+    //    {
+    //        Y temp = new Y();
+    //        temp.Val = obj.Val + 1;
+    //        return temp;
+    //    }
+
+    //    static void Main()
+    //    {
+    //        Y Yob = new Y();
+    //        ChangeIT change = IncrA;
+    //        X Xob = change(Yob);
+
+    //    }
+
+    //}
+    //delegate void StrMod(ref string str);
+
+    //class MultiCastDemo
+    //    {
+    //    static void ReplaceSpaces(ref string s)
+    //    {
+    //        Console.WriteLine("Change space by '-' signs");
+    //        s = s.Replace(' ', '-');
+    //    }
+
+    //    static void RemoveSpaces(ref string s)
+    //    {
+    //        string temp = "";
+    //        int i;
+
+    //        Console.WriteLine("Remove spaces");
+    //        for (i = 0; i < s.Length; i++)
+    //            if (s[i] != ' ') temp += s[i];
+
+    //        s = temp;
+    //    }
+
+    //    static void Reverse(ref string s) {
+    //        string temp = "";
+    //        int i, j;
+
+    //        Console.WriteLine("Обращение строки");
+    //        for (j = 0, i = s.Length - 1; i >= 0; i--, j++)
+    //            temp += s[i];
+
+    //        s = temp;
+    //    }
+
+    //    static void Main()
+    //    {
+    //        StrMod strOp;
+    //        StrMod replaceSp = ReplaceSpaces;
+    //        StrMod removeSp = RemoveSpaces;
+    //        StrMod reverseStr = Reverse;
+    //        string str = "This is a simple test.";
+
+    //        strOp = replaceSp;
+    //        strOp += reverseStr;
+
+    //        strOp(ref str);
+    //        Console.WriteLine("Results string: " + str);
+    //        Console.WriteLine();
+
+    //        strOp -= replaceSp;
+    //        strOp += removeSp;
+    //        str = "This is a simple test";
+
+    //        strOp(ref str);
+    //        Console.WriteLine("Results string: " + str);
+    //        Console.WriteLine();
+    //        strOp(ref str);
+    //    }
+
+    //    }
+
+    //class ExistDemo {
+    //    static void Main()
+    //    {
+    //        if (File.Exists("test.txt"))
+    //            Console.WriteLine("File exist and last access was in: " + File.GetLastAccessTime("test.txt"));
+    //        else
+    //            Console.WriteLine("File does not exist");
+    //    }
+    //}
     //class RandomAccessDemo {
     //    static void Main()
     //    {
@@ -55,7 +185,7 @@ namespace SimpleProgramm
     //        }
     //        finally { if (f != null) f.Close(); } Console.WriteLine();
     //    }
-      
+
     //}
     //class KtoD
     //{
