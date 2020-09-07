@@ -1,0 +1,26 @@
+User click on the app link
+    App open
+The following fields present inside the form
+    - Gas current indication - Gas old indication - Current Tariff
+    - Water - Water - Current Tariff
+    - Electricity - Electricity - Current Tariff
+    - OSMD(Jek) - OSMD(Jek) - Current Tariff
+    - Trash - Trash - Current Tariff
+    - Tv - Tv - Current Tariff
+    - Internet - Internet - Current Tariff
+    - Button 'Count indication'
+     - If button will pressed, view below appears:
+     - New view will appears with the next fields
+      - Gas - current price
+      - Water - current price
+      - Electricity - current price
+      - OSMD(Jek) - current price
+      - Trash - current price
+      - Tv - current price
+      - Internet - current price
+      - Total amount to pay - current price
+    - Button 'Reset indication'
+    - Button 'Edit Tariff'
+Logic of app
+    - App should get the latest data from Mongo DB
+    - User should be able reset all current indication
